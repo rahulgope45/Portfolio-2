@@ -1,0 +1,22 @@
+@keyframes colorCycle {
+  0%   { fill: #3b82f6; }
+  20%  { fill: #60a5fa; }
+  40%  { fill: #1e3a8a; }
+  60%  { fill: #ec4899; }
+  80%  { fill: #a855f7; }
+  100% { fill: #3b82f6; }
+}
+
+.lowpoly-face path {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+/* Animation class that completes fully */
+.lowpoly-face path.animating {
+  animation: colorCycle 0.8s linear forwards;
+}
+
+.lowpoly-face g {
+  pointer-events: none;
+}
