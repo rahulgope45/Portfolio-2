@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Trianglyfy from './Trianglyfy'
+import AnimatedContent from '../Animations/AnimatedContent'
 
 function About() {
 
@@ -35,10 +36,12 @@ function About() {
                         <Trianglyfy />
                     </div>
                     <div className='absolute top-[48px] left-[170px] z-5 '>
-                        <div class="relative bg-red-500 text-white px-6 py-3  w-fit font-semibold text-lg">
+                        <AnimatedContent>
+                            <div class="relative bg-red-500 text-white px-6 py-3  w-fit font-[Dancing_Script] font-semibold text-lg">
                             {time}
                             <div class="absolute -left-4 top-[50%] w-0 h-0 border-t-[12px] border-b-[12px] border-r-[24px] border-t-transparent border-b-transparent border-r-red-500 transform rotate-[340deg]"></div>
                         </div>
+                        </AnimatedContent>
                     </div>
 
                 </div>
