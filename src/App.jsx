@@ -8,7 +8,7 @@ function App() {
 
 
   return (
-    <div className='ml-[190px] mr-[190px] mt-4 '>
+    <div className='lg:ml-[190px] lg:mr-[190px] mt-4 '>
     <h1 className="font-['Dancing_Script'] font-bold text-[40px]">
       Rahul Gope
     </h1>
