@@ -1,13 +1,21 @@
 import React from 'react'
-import Trianglyfy from '../componets/Trianglyfy'
+import About from '../componets/About'
+import Projects from '../componets/Projects'
+import Resume from '../componets/Resume'
+import ContactMe from '../componets/ContactMe'
+import Skills from '../componets/Skills'
+
 
 function Home() {
   return (
     <div>
+      <About/>
+      <Projects/>
+      <Resume/>
+      <Skills/>
+      <ContactMe/>
         
-       <div className='h-[200px] w-[200px]'>
-         <Trianglyfy/> 
-       </div>
+       
     </div>
   )
 }
