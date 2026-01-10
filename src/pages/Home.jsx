@@ -10,9 +10,9 @@ function Home() {
   return (
     <div>
       <About/>
-      <Projects/>
-      <Resume/>
       <Skills/>
+      <Projects/>
+      <Resume/>   
       <ContactMe/>
         
        

@@ -9,9 +9,7 @@ function App() {
 
   return (
     <div className='lg:ml-[190px] lg:mr-[190px] mt-4 '>
-    <h1 className="font-['Dancing_Script'] font-bold text-[40px]">
-      Rahul Gope
-    </h1>
+      
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />

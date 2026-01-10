@@ -44,7 +44,7 @@ useEffect(() => {
                 {/* PASTE THE ENTIRE SVG CONTENT HERE */}
                 
             <svg xmlns="http://www.w3.org/2000/svg" width="349" height="620" fill="none" viewBox="0 0 349 620">
-  <g clip-path="url(#a)">
+  <g clipPath="url(#a)">
     <path fill="#F1CC98" stroke="#F1CC98" d="m175 318-7 1-1 5 8-6Z"/>
     <path fill="#F1CF9B" stroke="#F1CF9B" d="m167 324 6 7 2-13-8 6Z"/>
     <path fill="#F2C895" stroke="#F2C895" d="M168 319h-3l2 5 1-5Z"/>
