@@ -1,12 +1,37 @@
-import React from 'react'
-import About from '../componets/About'
-import Projects from '../componets/Projects'
-import Resume from '../componets/Resume'
-import ContactMe from '../componets/ContactMe'
-import Skills from '../componets/Skills'
-
+// In your main App.js or Home component
+import { useEffect } from 'react'
+import Lenis from 'lenis'
+import About from '@/componets/About'
+import Skills from '@/componets/Skills'
+import Projects from '@/componets/Projects'
+import Resume from '@/componets/Resume'
+import ContactMe from '@/componets/ContactMe'
+import StackedSkills from '@/components/StackedCards'
 
 function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.5,  // Slower = smoother (was 1.2)
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.8,  // Less aggressive
+      touchMultiplier: 1.5,
+      infinite: false,
+      lerp: 0.08  // Lower = smoother (was 0.1)
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
   return (
     <div>
       <About/>
@@ -14,10 +39,8 @@ function Home() {
       <Projects/>
       <Resume/>   
       <ContactMe/>
-        
-       
     </div>
   )
 }
 
-export default Home
+export default Home;

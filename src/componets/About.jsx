@@ -26,17 +26,17 @@ function About() {
 
 
     return (
-        <div className='mt-[160px] '>
+        <div className='mt-[100px] mb-10 '>
             <div className='flex  items-center justify-between lg:gap-[475px]'>
                 <div className='relative '>
                     <div className='absolute top-[34px] left-[-4px] z-0 '>
-                        <div className="w-[228px] h-[215px] bg-red-900 rounded-full"></div>
+                        <div className="w-[500px] h-[500px] bg-red-900 rounded-full"></div>
                     </div>
                     {/*Image[140,245] and circle*/}
-                    <div className='w-[140px] h-[300px] relative  z-10 '>
+                    <div className='w-[300px] h-[300px] relative   '>
                         <Trianglyfy />
                     </div>
-                    <div className='absolute top-[48px] left-[170px] z-5 '>
+                    <div className='absolute top-[200px] left-[300px] z-5 '>
                         <AnimatedContent>
                             <div className="relative bg-red-500 text-white px-6 py-3  w-fit font-[Dancing_Script] font-semibold text-lg">
                             {time}
