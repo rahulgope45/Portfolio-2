@@ -36,6 +36,7 @@ function Home() {
     <div>
       <About/>
       <Skills/>
+      <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>
       <Projects/>
       <Resume/>   
       <ContactMe/>
