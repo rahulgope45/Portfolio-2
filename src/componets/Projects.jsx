@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { fullStack, application, frontend } from '@/lib/data'
 import { SiGithub } from 'react-icons/si'
+import AnimatedContent from '@/Animations/AnimatedContent'
 
 
 function Projects() {
@@ -36,10 +37,12 @@ function Projects() {
   return (
     <section className="w-full flex flex-col items-center gap-10 py-20" id='projects'>
 
-      {/* Heading */}
+      <AnimatedContent>
+        {/* Heading */}
       <h1 className="font-extrabold font-[Dancing_Script] text-6xl">
         Projects
       </h1>
+      </AnimatedContent>
 
       {/* Category Buttons */}
       <div className="flex gap-4">

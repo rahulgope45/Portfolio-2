@@ -43,6 +43,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 
 import fullstack from '/fullstack.png'
+import AnimatedContent from '@/Animations/AnimatedContent';
+import FadeContent from '@/components/FadeContent';
 
 
 export const sampleData = [
@@ -206,11 +208,13 @@ const Card = ({ data, index, totalCards }) => {
 export default function Skills() {
   return (
     <div className="">
-      <div className="h-150 flex items-center justify-center">
+      
+        <div className="h-70 flex items-center justify-center">
         <h1 className="text-6xl font-bold font-[Dancing_Script]">
           I work on 
         </h1>
       </div>
+      
       
       <div className="relative">
         {sampleData.map((data, index) => (

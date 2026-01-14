@@ -1,3 +1,4 @@
+import AnimatedContent from '@/Animations/AnimatedContent'
 import React from 'react'
 
 function Resume() {
@@ -14,7 +15,8 @@ function Resume() {
      
 
       {/* Button */}
-      <a
+      <AnimatedContent>
+        <a
         href="/Rahuldevjan15.pdf"
         download
         className="inline-flex items-center justify-center
@@ -26,6 +28,7 @@ function Resume() {
       >
         Download Resume
       </a>
+      </AnimatedContent>
     </div>
   )
 }

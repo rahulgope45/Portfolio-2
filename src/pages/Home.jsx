@@ -35,6 +35,7 @@ function Home() {
   return (
     <div>
       <About />
+      <div className="border-t-5 border-dashed border-gray-400 mt-[300px] "></div>
       <Skills/>
       <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>
       <Projects/>
