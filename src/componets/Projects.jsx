@@ -33,7 +33,7 @@ function Projects() {
   }
 
   return (
-    <section className="w-full flex flex-col items-center gap-10 py-20">
+    <section className="w-full flex flex-col items-center gap-10 py-20" id='projects'>
 
       {/* Heading */}
       <h1 className="font-extrabold font-[Dancing_Script] text-6xl">

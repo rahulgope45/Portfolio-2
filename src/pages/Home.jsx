@@ -34,7 +34,7 @@ function Home() {
 
   return (
     <div>
-      <About/>
+      <About />
       <Skills/>
       <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>
       <Projects/>
@@ -42,7 +42,11 @@ function Home() {
       <Resume/> 
       <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>  
       <ContactMe/>
-      <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>
+      <div className="border-t-5 border-dashed border-gray-400 mb-20"></div>
+      <div className='font-extrabold font-[Dancing_Script] text-7xl text-center mb-20'>
+
+         <p> Bye :(</p>  
+      </div>
     </div>
   )
 }

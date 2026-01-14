@@ -26,7 +26,7 @@ function About() {
 
 
     return (
-        <div className='mt-[100px] mb-10 '>
+        <div className='mt-[100px] mb-10 ' id='about'>
             <div className='flex  items-center justify-between lg:gap-[475px]'>
                 <div className='relative '>
                     <div className='absolute top-[34px] left-[-4px] z-0 '>
