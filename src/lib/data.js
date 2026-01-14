@@ -116,7 +116,7 @@ export const frontend = [
       {type:"icon", icon: SiTailwindcss , alt: "T"  },
     ],
     img: 'portfolio.png',
-    src: '',
+    src: 'https://portfolio-2-two-ebon.vercel.app',
     repo: 'https://github.com/rahulgope45/Portfolio-2',
   },
 ]
