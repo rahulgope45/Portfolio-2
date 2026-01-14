@@ -49,7 +49,7 @@ export const sampleData = [
     {   
         id: 1,
         title: "FullStack",
-        description: "Building end-to-end web applications with modern technologies.",
+        description: "I build complete web solutions from frontend to backend.Focused on clean architecture, scalability, and performance.Comfortable turning complex requirements into working products.",
         stack: [
             { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB/ElEQVR4nO2aP0scQRiHHzw11ekRzgRCgn8gbRDxA2ghJNhFbZLGoBCxsgkEYnWNViI2WoiNld5BVPwAgo1pLPwGkkRJonDhjivUZMLCRJaXXXfF25tZnAfeZvbe4ffs3Cxz7IHD4bgtHUAJqALKsqrqbPk4IiULAquI2owjYuNKKFGVOCIqJRWJ6YDKiQhMB1RORGA6oHIiAtMBlRMRmA6onIjAdEDlRASmAyonIjAdUNkoEmfuz8Ar/RO7GXgCDANbaRH5A7yLyDKhP2e1yEKcMMCczSJ/gWfi2hSwDswAGT32FNi1WeSHGB8UfSvANPDb9j3yXYwP1GFuIyKXQJu4NgvU0iai9BNJ8hgoAGdpEvkJ9IRkyAIfgXIaRLz6pTd6GM+BozSI/H8UbwN9IXkeAsdpEPHXHjAU0PfepMjVHeYuiL6uRojU9KNzWYx7Xwc/DwI2+xhQDJizLHpbkxbZAbp1n3dyndcBz4FxMW+neL/hnXY9csChmHdf9D5KWuQ18Xnr6xsJWK1JYAn4oDe4n9GkRU58K3ITTcAXX99pwKExjJaAFUtkj3wDeiMkFgP6vgIvIrJkQ/ZQIiJeXQCr+vCX03fRu+NvgIOIvjXgpT6eZIB2oB/4pG+SaqSIibo/L0OLFgRV9Xg9ndcyFUtXYiPuHwYcDgfX/AMh2u8dPnwAiAAAAABJRU5ErkJggg==", alt:"javascript"},
             { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC5UlEQVR4nO1aTYiNURh+/GVqlBmlsFGku/E3yYKYjYVZUPJTKDaKjcJiLCgNFpSRZDX+iklkpZAxRFn4icUINRQJ05iIWYya4XL01rvQ17nve875vnPvSfPUu7nfeZ+fe8893/nOvcAo0sc6ACMATKI1AmCtS5ADCZg1SpFHFTsSMGqU2u4SZE0CRo1S5FHF0gSMGqWWuASZnYBRo9QslyCTEjBqlKqHI4YSMGsqFHlzxrsEDJsK9dYnyCOBiK41Rq6Hir4zrglEbxAfrwV98uaM0wLRIOJjUNDv8CE6rMzTungZUKdoH/Ih26mQzbT0NBT0/ZiraJM3Z2xQyBZbegaqtGqt9wnSrJCtsvS8qFKQZp8gJYVsm6XnbpWClHyCNCpk+yw9l6oUpMEnyBgAwwLZSUvPiSqEGGZvXvgoEF5BPFwWdD+EED4TCO8jHu4Juk9DCG8KhK8QDy8F3RshhOcFwq+Ihy+CLnnyxhGB8A+AOfyklqfGZTTHA/gt6B4NCbKnCqtQds82XRm/OyTI5sghvls0Fyo9m0KCrIgcpNeiuVLpIU/e0HahPwB8y9RPjyAPLJpblJ55IUGmKqR7LT1XPYLQ2CxalR7y5I2xAH4JpO2WnlMeQWhsFseE8WX2FIR+gbjTMn4BgIMAbvG9xvYF7+KnPBqbxQVB7zNyoEcg7nY8tdzIc7/ksOHrEvSe5wnSLRBTyKLRI+jdzkPcKRDTtCsa/Z5T2RntyjblCYD9Fea7K+bzg9pj5qykdzxPEG05/Lfe85nTagATBU7aXy3jfVOvB39rniBbPYSyN8vr/MvSNABT+GTmonL4ZoQiL8FoCRTNrv/lAnha8gRpKsBAUdWUJ8iMBAIYLvISjAmJ/OgzxF5yYTmAcwD6ahCgj7XJQ6Ggx9NdAO5E+ndEmU9v2gAsCjnDCkE93zM6+Lwp1PwAb+lpeaUTzprD9dOqybseisn855yzAD5xneHX6Noo/nv8BZq0zmS5TXnIAAAAAElFTkSuQmCC", alt:"html-5--v1"},
@@ -72,7 +72,7 @@ export const sampleData = [
     {   
         id: 2,
         title: "Application",
-        description: "Building end-to-end web applications with modern technologies.",
+        description: "I develop modern applications with real-world use in mind.Strong focus on performance, reliability, and smooth user flow.From idea to deployment, I handle the full development cycle.",
         stack: [
             {src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0klEQVR4nO3YP0vDQBzG8S9dCtXqJm5dLeog+AL6BgRfgXvxTdjBta+gdHBz7littOooOAkKopP/B90EkUghgUtI6iW9X+4a+kBoC+m1nz6XO1KY598sA02gB9wDV0AHaDAjqQFt4AvwEo4xqIKj2QKOgJ8JAPW4AKo4khKwA/Q1v7xzmDKwB9xkBFjHrAAHwLsBgBVMHegC34YB6jEEFvLAzHTqFCTdyOsN4E1wennAA9DyFxQjWfWvCRURPL4KYzxgYGrTPPQHDDJuYtN/vgY854AZAYvTIMa/xEcE4s0iZl8ZSIXEYZ5cxZSAuwmQAJP3NXOadtPcjQwQB7HVzCWwpAs514Q4jdmOeeMkiLOY4wwQ5zC1hJsiHYitBeAkDtJOOFkXYgsTyriiTwMQG9MslKbGiWkGz7OZUHqGIXk2E8qtACTazLpQM6FcC0HywITSEYRIT7NQGsIQyWbQbSWIiQ+VaCb2ZmooDJFohiTMQBhiuhl0MRIQkxh0MVIQUxh0MZIQExitqP/F/gpj1AXgxTREzaMgZBpM6rSEIVkxqVOOWZptY0ZZIPO4nIp/4y89zXLD9IsACfaZsyJApDEUBUNRMNZSNbiajewx5mHq/AFh2yFd8CITbgAAAABJRU5ErkJggg==", alt:"dart-language"},
             {src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA50lEQVR4nO3YMQ6CMBiG4fcCnsbT6KCRwSt0MeEfuYLn8BqexsnEAeNGiCI0Tfq1/G/CxsADbSmA5xXfBXgB/czjCewRyxYA+sFxoAJEi1COUMkRKjlCJXOESOYIkcwRIpkjRDJHiGRrRpjSN3uTGJHtm70RQBiJCgnmhMwcCzUg5mCKQUxhikN8wxSLGK5mJ0RXpxQV8ySqRzQ1DKfUO4DspdgByBRqQMTsADbAGbgDHYKFP4gtcAUeo3PkMe3o7k8NPUnMZ2W6/bj7xa1oIfId0yGYYxDFxO7HjggW8ztol/uivdX3Bp7xmJeHn7BLAAAAAElFTkSuQmCC" ,alt:"flutter"},
@@ -80,17 +80,17 @@ export const sampleData = [
 
 
         ],
-        img: "./fullstack.png",
-        colors: "#E0EFDE"
+        img: "/application.jpg",
+        colors: "#E2BC53"
     },
 
     {   id: 3,
         title: "UI/UX",
-        description: "Building end-to-end web applications with modern technologies.",
+        description: "I design interfaces that feel intuitive and easy to use.Balancing visual appeal with practical user experience.Every design decision is made to improve usability and clarity.",
         stack: [
             {src :"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfElEQVR4nO2ZXW6DMBAG5w4NuVaViN6nhRwvBG4SfvoaqJCMivJAMNu1LZdP8lOyxCM7WOOFPfHkCORACXwDw8KYsvSd8Rk3IAMSVxAp0L6YmC3IfDTA2QVEbzGpLSAD8ABOmtvJZiUkIANQAwcNkHzDZCQgA/ClAVJ5ALlpgHQeQFoNkNYDSKMBUnoAKTRAMg8gnxogiVlqVyB34A2lnM1hpQ3yAN5RzskcVlogdxcQUw7msCpWvJbXgIxvxKv5T6htpz2x+shz/WVWP/lIbj4L2kemfLyob81vBOsjE8Sa+l4TRuojtvWNlvZKfeSyoTYL0UeqWHyki8VH2lh8pAxla2VCkDyUy4dE6CO2r99a6zpI6iM2B2rv4rZxq4/MYZZWtnYBIfGR522azerHUZhnqm2nPf/BR4JIKvSRIJIKfSSIHIU+EkzyDRBBglSxgHSxgLSh+IQ0ZSj9DR8+otLfcO0jqv0NVz7ipL+h7SNO+xt/7SN7f2MPv/kBC39E7GnfwCQAAAAASUVORK5CYII=" ,alt:"figma--v1"}
         ],
-        img: "./fullstack.png",
+        img: "/cover.png",
         colors: "#753742"
     },
 ]
@@ -160,7 +160,7 @@ const Card = ({ data, index, totalCards }) => {
           className="w-[600px] h-[598px] m-[1px]"
         >
           <img 
-            src={data.img} 
+            src={data.img}  
             alt={data.title}
             className="w-full h-full object-cover rounded-l-3xl"
           />

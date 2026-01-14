@@ -36,7 +36,7 @@ export const skillData = [
 
 
         ],
-        img: "fullstack.png",
+        img: "/cover.png",
         colors: "#E0EFDE"
     },
 
@@ -73,8 +73,9 @@ export const fullStack = [
       {type:"icon", icon: SiDocker , alt: "docker"  },
 ,
     ],
-    img: '',
-    src: ''
+    img: 'proboat.png',
+    src: 'https://prop-bot-rental.vercel.app',
+    repo: 'https://github.com/rahulgope45/PropBot-Rental',
   },
   {
     id: 2,
@@ -95,8 +96,9 @@ export const fullStack = [
       {type:"icon", icon: SiSocketdotio , alt: "socket"  }
       
     ],
-    img: '',
-    src: ''
+    img: 'chat.png',
+    src: 'https://chatify-nine-fawn.vercel.app',
+    repo: 'https://github.com/rahulgope45/Chatify',
   },
 ]
 
@@ -113,8 +115,9 @@ export const frontend = [
       {type:"icon", icon: SiReact , alt: "R"  },
       {type:"icon", icon: SiTailwindcss , alt: "T"  },
     ],
-    img: '',
-    src: ''
+    img: 'portfolio.png',
+    src: '',
+    repo: 'https://github.com/rahulgope45/Portfolio-2',
   },
 ]
 
@@ -131,7 +134,8 @@ export const application = [
       {type:"icon", icon: SiDart , alt: "D"  },
       {type:"icon", icon: SiFlutter , alt: "F"  },
     ],
-    img: '',
-    src: ''
+    img: 'tracker.png',
+    src: 'https://habit-page.vercel.app',
+    repo: 'https://github.com/rahulgope45/Habit-Tracker',
   },
 ]

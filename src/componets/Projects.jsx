@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { fullStack, application, frontend } from '@/lib/data'
+import { SiGithub } from 'react-icons/si'
 
 
 function Projects() {
@@ -161,12 +162,12 @@ function Projects() {
       </div>
 
       {/* Project Card */}
-      <div className="w-[1000px] min-h-[500px] border rounded-xl p-6 flex gap-6">
+      <div className="w-[1000px] min-h-[500px] border rounded-xl p-6 flex gap-6" >
 
         {/* Image */}
-        <div className="w-[500px] h-[300px] bg-gray-100 flex items-center justify-center">
+        <div className="w-[900px] h-[300px] bg-gray-100 flex items-center justify-center">
           {project.img ? (
-            <img src={project.img} className="w-full h-full object-cover" />
+            <img src={project.img} className="w-full h-full object-cover cursor-pointer" onClick={() => window.open(project.src, "_blank")} />
           ) : (
             <span className="text-gray-400">No Image</span>
           )}
@@ -183,6 +184,7 @@ function Projects() {
               <li key={i}>{desc}</li>
             ))}
           </ul>
+          <SiGithub className='w-5 h-5 cursor-pointer' onClick={() => window.open(project.repo, "_blank")}/>
 
           {/* Tech Stack */}
           <div className="flex flex-wrap gap-3 mt-4">
