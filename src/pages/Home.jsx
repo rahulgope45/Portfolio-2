@@ -38,8 +38,11 @@ function Home() {
       <Skills/>
       <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>
       <Projects/>
-      <Resume/>   
+      <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>
+      <Resume/> 
+      <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>  
       <ContactMe/>
+      <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>
     </div>
   )
 }

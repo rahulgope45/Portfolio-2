@@ -5,7 +5,7 @@
        S 80 10, 90 5
        S 110 0, 118 5"
     fill="none"
-    stroke="black"
-    stroke-width="2"
+    stroke="#a42828"
+    stroke-width="5"
   />
 </svg>

@@ -27,9 +27,9 @@ function Projects() {
   }
 
   const handlePrev = () => {
-    
-      setIndex(0)
-    
+
+    setIndex(0)
+
   }
 
   return (
@@ -143,21 +143,21 @@ function Projects() {
       {/* Next Button */}
       <div className='flex gap-2'>
         <button
-        onClick={handlePrev}
-        disabled={index === 0}
-        className="px-4 py-2 rounded-full border disabled:opacity-40"
-      >
-        previous 
-      </button>
+          onClick={handlePrev}
+          disabled={index === 0}
+          className="px-4 py-2 rounded-full border disabled:opacity-40"
+        >
+          previous
+        </button>
         <button
-        onClick={handleNext}
-        disabled={index === activeData.length - 1}
-        className="px-4 py-2 rounded-full border disabled:opacity-40"
-      >
-        Next Project →
-      </button>
+          onClick={handleNext}
+          disabled={index === activeData.length - 1}
+          className="px-4 py-2 rounded-full border disabled:opacity-40"
+        >
+          Next Project →
+        </button>
 
-      
+
       </div>
 
       {/* Project Card */}
@@ -186,19 +186,30 @@ function Projects() {
 
           {/* Tech Stack */}
           <div className="flex flex-wrap gap-3 mt-4">
-            {project.stack.map((tech, i) => (
-              <div
-                key={i}
-                className="bg-white shadow-md rounded-lg p-2 flex items-center justify-center"
-              >
-                <img src={tech.src} alt={tech.alt} className="w-8 h-8" />
-              </div>
-            ))}
+            {project.stack.map((tech, i) => {
+              const Icon = tech.icon
+
+              return (
+                <div
+                  key={i}
+                  className="bg-white shadow-md rounded-lg p-2 flex items-center justify-center"
+                >
+                  {tech.type === "image" && tech.src ? (
+                    <img src={tech.src} alt={tech.alt} className="w-8 h-8" />
+                  ) : Icon ? (
+                    <Icon className="w-8 h-8 text-black" />
+                  ) : (
+                    <span className="text-xs text-red-500">⚠</span> // fallback
+                  )}
+                </div>
+              )
+            })}
           </div>
+
         </div>
       </div>
 
-      
+
 
     </section>
   )
