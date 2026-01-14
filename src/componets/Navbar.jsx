@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'//For Future 
+import ColorThemeToggler from './ColorThemeToggler'
 
 function Navbar({scrollToSection}) {
 
@@ -11,8 +12,9 @@ const handleActive = ()=>{
 
 
   return (
-    <div className='flex gap-[46px] mt-[57px] font-[Dancing_Script] font-bold text-[40px]'>
-        <button
+    <div >
+        <div className='flex gap-[46px] mt-[57px] font-[Dancing_Script] font-bold text-[40px]'>
+          <button
         onClick={() =>scrollToSection("about")}
         >About</button>
         <button
@@ -24,6 +26,8 @@ const handleActive = ()=>{
         <button
         onClick={() =>scrollToSection("contactme")}
         >ContactMe</button>
+        </div>
+        <ColorThemeToggler/>
         
     </div>
   )

@@ -6,7 +6,7 @@ function Resume() {
     id='resume'
     >
       {/* Heading */}
-      <h1 className="font-[Dancing_Script] font-extrabold text-4xl text-black">
+      <h1 className="font-[Dancing_Script] font-extrabold text-4xl ">
         Get My Resume
       </h1>
 
@@ -19,8 +19,8 @@ function Resume() {
         download
         className="inline-flex items-center justify-center
                    px-6 py-2 rounded-full
-                   border border-black
-                   font-medium text-black
+                   border border-
+                   font-medium 
                    hover:bg-black hover:text-white
                    transition-all duration-300"
       >

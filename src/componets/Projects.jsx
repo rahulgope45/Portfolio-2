@@ -178,7 +178,7 @@ function Projects() {
             {project.title}
           </h2>
 
-          <ul className="list-disc pl-5 space-y-2 text-lg">
+          <ul className="list-disc pl-5 space-y-2 text-lg font-[Dancing_Script] font-medium">
             {project.description.map((desc, i) => (
               <li key={i}>{desc}</li>
             ))}

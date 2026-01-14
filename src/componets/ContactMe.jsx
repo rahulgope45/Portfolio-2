@@ -33,21 +33,21 @@ const ContactMe = () => {
   return (
     <motion.section
       id="contactme"
-      className="min-h-screen flex items-center justify-center px-4 bg-white"
+      className="min-h-screen flex items-center justify-center px-4 "
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
-      <div className="w-full max-w-xl border border-black/10 rounded-2xl p-8">
-        <h2 className="text-3xl font-bold text-black text-center mb-8 font-[Dancing_Script]">
+      <div className="w-full max-w-xl border-2  rounded-2xl p-8">
+        <h2 className="text-3xl font-bold text-center mb-8 font-[Dancing_Script]">
           Contact Me
         </h2>
 
         <form ref={form} onSubmit={sendEmail} className="space-y-5">
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-black mb-1 font-[Dancing_Script]">
+            <label className="block text-sm font-medium mb-1 font-[Dancing_Script]">
               Name
             </label>
             <input
@@ -55,14 +55,14 @@ const ContactMe = () => {
               name="name"
               required
               placeholder="Your name"
-              className="w-full px-4 py-2 border border-black/20 rounded-lg
+              className="w-full px-4 py-2 border-2 rounded-lg
                          focus:outline-none focus:border-black transition"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-black mb-1 font-[Dancing_Script]">
+            <label className="block text-sm font-medium  mb-1 font-[Dancing_Script]">
               Email
             </label>
             <input
@@ -70,14 +70,14 @@ const ContactMe = () => {
               name="email"
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-2 border border-black/20 rounded-lg
+              className="w-full px-4 py-2 border-2 rounded-lg
                          focus:outline-none focus:border-black transition"
             />
           </div>
 
           {/* Message */}
           <div>
-            <label className="block text-sm font-medium text-black mb-1 font-[Dancing_Script]">
+            <label className="block text-sm font-medium  mb-1 font-[Dancing_Script]">
               Message
             </label>
             <textarea
@@ -85,7 +85,7 @@ const ContactMe = () => {
               rows="4"
               required
               placeholder="Your message..."
-              className="w-full px-4 py-2 border border-black/20 rounded-lg
+              className="w-full px-4 py-2 border-2 rounded-lg
                          focus:outline-none focus:border-black transition resize-none"
             />
           </div>
@@ -94,8 +94,8 @@ const ContactMe = () => {
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-2 rounded-full border border-black
-                         bg-black text-white font-medium
+              className="w-full py-2 rounded-full border-2
+                           font-medium
                          hover:bg-white hover:text-black transition font-[Dancing_Script]"
             >
               Send Message
