@@ -25,7 +25,10 @@ const ColorThemeToggler = () => {
 ];
 
 
-  const [currentThemeIndex, setCurrentThemeIndex] = useState(16);
+  const [currentThemeIndex, setCurrentThemeIndex] = useState(() => {
+    const savedIndex = localStorage.getItem("themeIndex");
+    return savedIndex ? parseInt(savedIndex) : 16
+  });
 
   const currentTheme = themes[currentThemeIndex];
 
@@ -33,7 +36,10 @@ const ColorThemeToggler = () => {
     document.body.style.backgroundColor = currentTheme.bg;
     document.body.style.color = currentTheme.text;
     document.body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
-  }, [currentTheme]);
+
+    //saving to loaclStorage
+    localStorage.setItem("themeIndex", currentThemeIndex.toString());
+  }, [currentTheme,currentThemeIndex]);
 
   const handleSliderChange = (e) => {
     const value = parseInt(e.target.value);
@@ -246,7 +252,7 @@ const ColorThemeToggler = () => {
                   type="range"
                   className="flex-1 max-w-[180px]"
                   min="0"
-                  max="6"
+                  max={themes.length - 1}
                   defaultValue="0"
                   onChange={handleSliderChange}
                 />
