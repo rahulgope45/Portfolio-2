@@ -216,11 +216,12 @@ const ColorThemeToggler = () => {
         }
       `}</style>
 
-      {/* Demo Content */}
+      
       
 
-      {/* Theme Slider */}
-      <div className="theme-slider-wrapper">
+     <div className='hidden md:block'>
+       {/* Theme Slider Desktop*/}
+      <div className="theme-slider-wrapper ">
         <div className="slider-container">
           <span className="theme-name">{currentTheme.name}</span>
           <input
@@ -233,6 +234,28 @@ const ColorThemeToggler = () => {
           />
         </div>
       </div>
+     </div>
+
+
+     <div className='block md:hidden'>
+       {/* Theme Slider Mobile*/}
+      <div className="px-5 pb-4">
+              <div className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-xl px-4 py-3 rounded-2xl border border-white/10">
+                <span className="font-semibold text-sm">Theme</span>
+                <input
+                  type="range"
+                  className="flex-1 max-w-[180px]"
+                  min="0"
+                  max="6"
+                  defaultValue="0"
+                  onChange={handleSliderChange}
+                />
+              </div>
+            
+      </div>
+
+      
+     </div>
     </>
   );
 };

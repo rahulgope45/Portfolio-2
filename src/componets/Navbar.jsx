@@ -56,7 +56,7 @@ function Navbar({ scrollToSection }) {
           <div className="flex items-center justify-between px-5 py-4">
             {/* Logo/Brand */}
             <div className="font-[Dancing_Script] font-bold text-2xl">
-              Portfolio
+              Rahul
             </div>
 
             {/* Hamburger Button */}
@@ -112,18 +112,8 @@ function Navbar({ scrollToSection }) {
             </nav>
 
             {/* Mobile Theme Toggler */}
-            <div className="px-5 pb-4">
-              <div className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-xl px-4 py-3 rounded-full border border-white/10">
-                <span className="font-semibold text-sm">Theme</span>
-                <input
-                  type="range"
-                  className="flex-1 max-w-[180px]"
-                  min="0"
-                  max="6"
-                  defaultValue="0"
-                />
-              </div>
-            </div>
+            
+            <ColorThemeToggler/>
           </div>
         </div>
 

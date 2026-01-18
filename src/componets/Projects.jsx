@@ -62,7 +62,8 @@ function Projects() {
             onClick={() => handleCategoryChange('fullStack')}
             className={`
               relative px-5 py-2 rounded-full border
-              transition-all duration-300
+              transition-all duration-300 font-[Dancing_Script]
+                   font-bold 
               ${category === 'fullStack'
                 ? `bg-black text-white
                    after:content-['']
@@ -87,7 +88,8 @@ function Projects() {
             onClick={() => handleCategoryChange('frontend')}
             className={`
               relative px-5 py-2 rounded-full border
-              transition-all duration-300
+              transition-all duration-300 font-[Dancing_Script]
+                   font-bold 
               ${category === 'frontend'
                 ? `bg-black text-white
                    after:content-['']
@@ -112,7 +114,8 @@ function Projects() {
             onClick={() => handleCategoryChange('application')}
             className={`
               relative px-5 py-2 rounded-full border
-              transition-all duration-300
+              transition-all duration-300 font-[Dancing_Script]
+                   font-bold 
               ${category === 'application'
                 ? `bg-black text-white
                    after:content-['']
@@ -139,14 +142,14 @@ function Projects() {
           <button
             onClick={handlePrev}
             disabled={index === 0}
-            className="px-4 py-2 rounded-full border disabled:opacity-40"
+            className="px-4 py-2 rounded-full border disabled:opacity-40 font-[Dancing_Script] font-bold"
           >
             previous
           </button>
           <button
             onClick={handleNext}
             disabled={index === activeData.length - 1}
-            className="px-4 py-2 rounded-full border disabled:opacity-40"
+            className="px-4 py-2 rounded-full border disabled:opacity-40 font-[Dancing_Script] font-bold"
           >
             Next Project →
           </button>
@@ -226,7 +229,8 @@ function Projects() {
             onClick={() => handleCategoryChange('fullStack')}
             className={`
               relative px-4 py-2 rounded-full border text-sm
-              transition-all duration-300
+              transition-all duration-300 font-[Dancing_Script]
+                   font-bold 
               ${category === 'fullStack'
                 ? 'bg-black text-white shadow-lg'
                 : 'bg-white text-black'
@@ -240,7 +244,8 @@ function Projects() {
             onClick={() => handleCategoryChange('frontend')}
             className={`
               relative px-4 py-2 rounded-full border text-sm
-              transition-all duration-300
+              transition-all duration-300 font-[Dancing_Script]
+                   font-bold 
               ${category === 'frontend'
                 ? 'bg-black text-white shadow-lg'
                 : 'bg-white text-black'
@@ -254,7 +259,8 @@ function Projects() {
             onClick={() => handleCategoryChange('application')}
             className={`
               relative px-4 py-2 rounded-full border text-sm
-              transition-all duration-300
+              transition-all duration-300 font-[Dancing_Script]
+                   font-bold 
               ${category === 'application'
                 ? 'bg-black text-white shadow-lg'
                 : 'bg-white text-black'
@@ -270,14 +276,14 @@ function Projects() {
           <button
             onClick={handlePrev}
             disabled={index === 0}
-            className="flex-1 px-3 py-2 text-sm rounded-full border disabled:opacity-40 transition-opacity"
+            className="flex-1 px-3 py-2 text-sm rounded-full border disabled:opacity-40 transition-opacity font-[Dancing_Script] font-bold "
           >
             Previous
           </button>
           <button
             onClick={handleNext}
             disabled={index === activeData.length - 1}
-            className="flex-1 px-3 py-2 text-sm rounded-full border disabled:opacity-40 transition-opacity"
+            className="flex-1 px-3 py-2 text-sm rounded-full border disabled:opacity-40 transition-opacity font-[Dancing_Script] font-bold"
           >
             Next →
           </button>
