@@ -44,7 +44,7 @@ function Home() {
       <div className="border-t-5 border-dashed border-gray-400 mb-10"></div>  
       <ContactMe/>
       <div className="border-t-5 border-dashed border-gray-400 mb-20"></div>
-      <div className='font-extrabold font-[Dancing_Script] text-7xl text-center mb-20'>
+      <div className='font-extrabold font-[Dancing_Script] text-7xl text-center mb-30'>
 
          <p> Bye :(</p>  
       </div>

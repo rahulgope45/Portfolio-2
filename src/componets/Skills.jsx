@@ -1,106 +1,59 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-
-// const sampleData = [
-//   {
-//     id: 1,
-//     title: "E-Commerce Platform",
-//     description: "A modern e-commerce solution with real-time inventory management, advanced analytics, and seamless payment integration.",
-//     image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop",
-//     stack: [
-//       { name: "React", icon: "⚛️" },
-//       { name: "Node.js", icon: "🟢" },
-//       { name: "MongoDB", icon: "🍃" },
-//       { name: "AWS", icon: "☁️" }
-//     ]
-//   },
-//   {
-//     id: 2,
-//     title: "AI-Powered Dashboard",
-//     description: "Intelligent analytics dashboard leveraging machine learning for predictive insights and automated reporting capabilities.",
-//     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-//     stack: [
-//       { name: "Python", icon: "🐍" },
-//       { name: "TensorFlow", icon: "🧠" },
-//       { name: "Docker", icon: "🐳" },
-//       { name: "Redis", icon: "📦" }
-//     ]
-//   },
-//   {
-//     id: 3,
-//     title: "Mobile Banking App",
-//     description: "Secure and intuitive mobile banking application with biometric authentication and instant transaction processing.",
-//     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop",
-//     stack: [
-//       { name: "React Native", icon: "📱" },
-//       { name: "Firebase", icon: "🔥" },
-//       { name: "Stripe", icon: "💳" },
-//       { name: "GraphQL", icon: "◆" }
-//     ]
-//   }
-// ];
-
-
-
-import fullstack from '/fullstack.png'
-import AnimatedContent from '@/Animations/AnimatedContent';
-import FadeContent from '@/components/FadeContent';
-
+import { SiCloudinary, SiCss3, SiDart, SiDocker, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGit, SiGithub, SiHtml5, SiJavascript, SiMongodb, SiNodedotjs, SiReact, SiSocketdotio, SiTailwindcss, SiTypescript } from 'react-icons/si';
 
 export const sampleData = [
-    {   
-        id: 1,
-        title: "FullStack",
-        description: "I build complete web solutions from frontend to backend.Focused on clean architecture, scalability, and performance.Comfortable turning complex requirements into working products.",
-        stack: [
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB/ElEQVR4nO2aP0scQRiHHzw11ekRzgRCgn8gbRDxA2ghJNhFbZLGoBCxsgkEYnWNViI2WoiNld5BVPwAgo1pLPwGkkRJonDhjivUZMLCRJaXXXfF25tZnAfeZvbe4ffs3Cxz7IHD4bgtHUAJqALKsqrqbPk4IiULAquI2owjYuNKKFGVOCIqJRWJ6YDKiQhMB1RORGA6oHIiAtMBlRMRmA6onIjAdEDlRASmAyonIjAdUNkoEmfuz8Ar/RO7GXgCDANbaRH5A7yLyDKhP2e1yEKcMMCczSJ/gWfi2hSwDswAGT32FNi1WeSHGB8UfSvANPDb9j3yXYwP1GFuIyKXQJu4NgvU0iai9BNJ8hgoAGdpEvkJ9IRkyAIfgXIaRLz6pTd6GM+BozSI/H8UbwN9IXkeAsdpEPHXHjAU0PfepMjVHeYuiL6uRojU9KNzWYx7Xwc/DwI2+xhQDJizLHpbkxbZAbp1n3dyndcBz4FxMW+neL/hnXY9csChmHdf9D5KWuQ18Xnr6xsJWK1JYAn4oDe4n9GkRU58K3ITTcAXX99pwKExjJaAFUtkj3wDeiMkFgP6vgIvIrJkQ/ZQIiJeXQCr+vCX03fRu+NvgIOIvjXgpT6eZIB2oB/4pG+SaqSIibo/L0OLFgRV9Xg9ndcyFUtXYiPuHwYcDgfX/AMh2u8dPnwAiAAAAABJRU5ErkJggg==", alt:"javascript"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC5UlEQVR4nO1aTYiNURh+/GVqlBmlsFGku/E3yYKYjYVZUPJTKDaKjcJiLCgNFpSRZDX+iklkpZAxRFn4icUINRQJ05iIWYya4XL01rvQ17nve875vnPvSfPUu7nfeZ+fe8893/nOvcAo0sc6ACMATKI1AmCtS5ADCZg1SpFHFTsSMGqU2u4SZE0CRo1S5FHF0gSMGqWWuASZnYBRo9QslyCTEjBqlKqHI4YSMGsqFHlzxrsEDJsK9dYnyCOBiK41Rq6Hir4zrglEbxAfrwV98uaM0wLRIOJjUNDv8CE6rMzTungZUKdoH/Ih26mQzbT0NBT0/ZiraJM3Z2xQyBZbegaqtGqt9wnSrJCtsvS8qFKQZp8gJYVsm6XnbpWClHyCNCpk+yw9l6oUpMEnyBgAwwLZSUvPiSqEGGZvXvgoEF5BPFwWdD+EED4TCO8jHu4Juk9DCG8KhK8QDy8F3RshhOcFwq+Ihy+CLnnyxhGB8A+AOfyklqfGZTTHA/gt6B4NCbKnCqtQds82XRm/OyTI5sghvls0Fyo9m0KCrIgcpNeiuVLpIU/e0HahPwB8y9RPjyAPLJpblJ55IUGmKqR7LT1XPYLQ2CxalR7y5I2xAH4JpO2WnlMeQWhsFseE8WX2FIR+gbjTMn4BgIMAbvG9xvYF7+KnPBqbxQVB7zNyoEcg7nY8tdzIc7/ksOHrEvSe5wnSLRBTyKLRI+jdzkPcKRDTtCsa/Z5T2RntyjblCYD9Fea7K+bzg9pj5qykdzxPEG05/Lfe85nTagATBU7aXy3jfVOvB39rniBbPYSyN8vr/MvSNABT+GTmonL4ZoQiL8FoCRTNrv/lAnha8gRpKsBAUdWUJ8iMBAIYLvISjAmJ/OgzxF5yYTmAcwD6ahCgj7XJQ6Ggx9NdAO5E+ndEmU9v2gAsCjnDCkE93zM6+Lwp1PwAb+lpeaUTzprD9dOqybseisn855yzAD5xneHX6Noo/nv8BZq0zmS5TXnIAAAAAElFTkSuQmCC", alt:"html-5--v1"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVElEQVR4nO2ZP0gcQRTGPyEWYkTPgMQ0wWBhLExSKTZnESLBwipWUeFIJIWSwkCQiIWCiCHNpVIQ1CoRRCGGKAnYSGKhNgEb74qAFv7BgAZB7/RkZZBluHm3t/vGG8x88Jrbt983v92d25k7wMrKyuq66R+AVI7rkAMkbgBIjAPklwEgPzlAZg0AmeEAGTUAZIQDZMAAkH4OkC4DQDo5QFoMAHnGAdJABKyDT/tETpgj4D4RsM0RACAPQJLIqeIIuUUEJMQggqo4w6NVypBxMdATIqSEIeMu4X/CdLEutMU8eTck/wdE7yYYtcYMsiz5h4neVU6QeWaQr5J/M9H7jRNkghlkUvJvJ3rHOUHea34Lvyb8hjlB3mQB0uPDv4/w6+YEacsCZNCH/wfCr5UTpDELkI8+/McIvyecII+YJ/tzyX+a6H3ICXKHGaRJ8v9B9JZzgtwAcKoI+i311ngAqZfOWVH0nQHIB7P2FGF/pL5KDyDOitqtmKJvFxq0rgj7m2YlOwfgOE3vsTgmLzR3rmC/c6lFRVhSsToNAYgAWBAVEZ+lk2p1vQgN+kw8KjcD+BYSvp+gQVEi8JXPfUmJOFflG9XAgd4ME9h5xJbEuqmM8AmJlcIXxTxKueqdDpCXWbwn3FC3xVbV6+BTrnqhA4TaM6Qy7OsTPs9t1gFS53MwQapWB8i9HIBU6AChviZ1VSE0ybkrHQCmABxoGPgRgO8A3gKoxhWpAMBjAEPEos9LxcXfBs7vu0UwQF7vVk6uepC79VS8mTdERcVnzjErKyur/1zni6RsTvF5fPgAAAAASUVORK5CYII=" ,alt:"css3"},
-            { src:"data:image/png;base64,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", alt:"react-native"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nLWVvwqBURiHny9lcAEGJZsMbOIKsJlMMrJRIlJcgtFdKKPiBuzfajAoTEYL+XTqU9JH5++vfuN5njqd97ygljKQw1FywAFYAzHb8AxwBoKwC5vwOOB/wN8d2RJMI+Cid6BoCk8Ctx8C0R3gmQgGf+DvVk0EvoRgpQtPS8CD8AoTOoK6pEC0oiPoKgjaNp9nENGJjmCoIOjrCBoKgqaOIAU8JQVZNLORgO9NprkmIRhjEA/Y/oEfdYfse6IvEfCH6T/0mQJw/RL0sJwScAr3QAdHaQFLV3CRPDB3KRAbbqZy4gWAsJ8T9zEhxAAAAABJRU5ErkJggg==", alt:"mongodb"},
-            {src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEWUlEQVR4nO2abWiWVRjHf1ubOW2aK0pboOIidb2qjCyWhaJfFBEy+mL5/kWxD0X1JQhyOjVE6Y1CBpqRb/jK6EOSkYiZhY5tCr60sYZGY3NOR5vNTQ5cD9wczrmf57l373nu83j/4bBxP/c513X+93Wuc53rOhAjRowYMWJkGq8Ax4BO4AZwBHiJ+wClwC6gHxjQmnq2DxhPDqII+BC4ZZi43rqBT6SP88gD3gJaLJM9Dpyw/NYEvIHDmAb8apncZWCx590FwBXLu78AL+AQHgG2A32GydwW837Q0K8QeBe4aeh3V3zH40QYhTKBTp8JjE1hnEd9CLwhvsREYFYxB2i0mPCZgFuc3xK6BMwnAngaqLUo2Qq8LY5wMFggDtEk4yegnCxgDFAN9Fq2MfXbQyHKG+Gzjd6RJfMwGUC+fNV/LV9ERXcTshRItYsPemCohL8O1Fkm/idQSeZQAZy26HIBmBemsDxgm0XYdWCZWEamoWSuBP6xhNWbwxK0yiCgR9Z5MdnHaGCLxR8tD0NAnTboYWAS0cNT4oO8up4LY+Bez4A1RB+7NUsdNAY8bVMa/f4AOqR9lcShbZQ9/W+JJPukX5M8/wyYlaKH36rpnDUCOj39fjT8/oxPpGdrDcDsXCCgEuhKc/KJpqxjqcsEFIup6xNTznanyFA7zNfAXvnqpl2o3FUCVmhjNgPTk4xVIQcgbz9FlpME1GhjqtA61W3OuyPdsgRgkSfgsDZmOmHrfq1vmYsEfKuNWSuHnFQwA/hGmjoBjnKRgDct3r1e4oV1YhUTA54xIk/AMOBsilueyiH+JlazVmIH5wlAcoM/B4wD1HF3iU+myQkCEpgLfA+0BSDiOwsJThHgxWMS76+W4+0h8Qv/+ZCg8gE5Q4ANeRIIbTBYyinXCHhNKkBX5a+qEqeDKZo+6sToFAGLtPGqAujT7emv/neKgDJD7cAUzNhQrvW/6BoBCue1MVV29zmS40VD9Uk5S+cImCe1wgHD19wj2R+1ND4FvpRnjZY6QKmLBCisAf4PsPcn2k2fzFDoBPRowUdY26AqmJ4MMPmjwGQfuT+EnRQ9F7AgmWoc8CzwvtwPqpdsUZcEQG1i/uoY/EGSdHy56KZXrAaNdwxfQZnv50CJpU+RVt8/yNChRHQxLalUky1JUeVTkFSntALt/Y+0974gfBSIL2k36KV0XR+2wJeB3y3rslm893tiyjpZ6qJU2Bcy6i26nBVdhwT5kpK+lobTag3xSsskOSRlvVBbLNUc7w5hat1SVg9DXrVFXlYLteNkrTVrSvVKoVJ5+KG0uEgVap8AngemAiNDGG+mj89pED/gBAqkTr/DksbW8aRUeNPZdSKJUcDHwF/aeq2yWEiRvH87QNwRWQJ2W75ki6THE1hs8CPpRp6Rxas+l6tOSlrLdp94ITmCfAlLU8n+Ju4TDycHUeJzD7g/jfvEzqNCIroO8ewHpO4XI0aMGDFikDncAwSpSmbCObahAAAAAElFTkSuQmCC", alt:"node-js"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADIUlEQVR4nO2YTYhNYRjHf9c1RilMimsMjexsKAtszE5KiGxm7XPB1pRQFoMFRY2arFhZkEmEEqGMRhSKBWZofDSaxndmwczoqf/VO+eec895771zZzTnV6dpzn2e//l6nud9nhdSUlJSUlJSJg9Tgc3AKeAR8B0YAb4AXUA7sAHIMkGpAfYCb3TjccdbYCeQidBrBn4CF4CGCt1jA3BRuqZfwCKg07nJJ8ABYCUwH5gG1AOrgIPAU8f2NrAg4sKnZfMKqCvzIeqkMyLdApYDA84FLazisK+wBXgtvx5gcYhdLfBQNpeLfL04MvIfkZ7pjqIR+CiDa8As/DD7606ozQmxaXReVAul0SL/AemNwpL1sfMQ2TKKww3pdETYrAeGgd9Ak6d+k/yGpVPADiecfL9EkNlAt/SiQvOIfrcIyCXUzTkRY/6hFaov5sK+bJWelewwsioM+QIRFwHZJPZrnepUagIGMZ1n0rXqFveGW2P0WpN8wTMyshJbSQ5J93A5MY9HTnXpgrZOVJLV0r1XRhVq9KlyH2SYNOmSUi9d6w7iwvBSyLpQ4yzMV5KE/R8ZV7pfykr3V8KV2hZSd6XOdwI9STuBfHsxFvhorwAGZX9Wfwd1vuIX88VXe3egGd1VysXG8kjKDKBfPv36/798kHMBv/OlPMh4kw+rH8Am4JtveOUTrKAdriJuojfrXLNvwufXEav744FbetsCv7X5lOC7Ml5H9Ykbkmp9hrGjMjxG9dlXbEgKaVPMPrYnelfl3ZA1CRrGsMbR/CJ5rofZTmVYopDtjigi8zxa+LBW3vyLDkJ9xYw8JsSXRUqn71Dl7XdTRneA6ZSGbRVdlU6nOtiShqRyhrG5yhMzuqU368NMZxflU8RGnMX6UIkbD8FhbKhYbi0F3utmeoGNCeaAjGb9XvmZ/7Ix2gpKtCWUx36477QuNnvv1+ydU7jkVO3s/AvH9gGwMETTXQ86KrA3kJFO1PrzD0ukPc5bjjusO9gGTInQa1O4HS8j/4KYzgnpBjuCAmoUXie1gWdV7SvwWcncrl2YCbsbn5KSkpKSMqn4C7OqTrF1asWzAAAAAElFTkSuQmCC", alt:"express-js"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABjklEQVR4nO2Wr0sEQRTHP/gD4bCcopgUBEHEZDQIFotgVcMVo8EitjMKgkXEf0CTzWA0CHpGBYOYBBHFYBGDSRwZGOF4zN7uyXkzg+8Djw379s33A7O7A4qiNMslYCKvWhERk0jlEjqgURFB6IBGRQShAxoVEYQOaFREEDqgURFB6IBGRQShAxoVEYQOaFRE8C9Ffkv9jDtgHZgBBoGyq1Fg1t17il1kF+gu0F+LWeS0if7rvxbZ9pTE12OfnRd9dlsdAPfAM3AGbAD9bvu1/WUvOm9I9B1m9L0BHzGLlETfSau3dbtExkXfCHCVokjV09sBLGe8E9GKvAMTGRk6gRXgJQURW6/AdIMsAxn/kOhEbH0Ce0BfRh77UbhNQaT+M1sFej0zFlMS+akHYNKzxZITMcCxmNETs8iCO299ee5tiRnDMYvYH6BlDFgD9t1Za9VzIq6kIJJHF3CTukgJOCq4TjARe67aAZaAKSdWdtc5YBN4bGKdlou0q3IJHdCoiOAigpAmp85laEVRaMg36b7oy/I7eqEAAAAASUVORK5CYII=" ,alt:"typescript"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVR4nO3WvWsUURSG8R+KSLCwUUEixA+wsVARIlpGEIkKYpHG1spGEP8EDYipQjBVLGy1sbGzshHBJmAlKORDEFOImBgwZGTgFkuI7Ex278yK54HTDcx75p575iEIgiAIeucQ7uEVvuAX1rCMt5jBBPYZMIYwmQIXFWoVT3HKAHAE7yoG31qbeJZOrhXG8G2H4TtrBbexq8nwV2uMTNV6jcNNhL+O9T6HL1J9xeWc4W/gd6bwRaoNPMCeLhNQbrcljNdpYClz+KKjytV7YpsMx/G947nFOg0sN9hAgR94jFGM4CY+bnmm/KiVuZZ+UmXXd3ASx3Axjdd9PE+bpakmH8rAblzCizTTucKvY1hmzuJ9pgYmNcRezPY5/Kc2vOpWcqFew6/hXFuWeRrzPYRfxZW2LbMcqUc7uOALaeN1ZaSHi1da5hwOVHjPebypODLT2D+olnkBT/ABP9NpfsZL3MVBFQnLtH2FZXYjLFN9y5xKW+hoWGZNyxxLzfzzlnkmLNN/bpn9pjHLzEl2y2yKLJbZBn2zzCAIgiDwF/4AXNjHeNfsTCUAAAAASUVORK5CYII=", alt:"tailwind_css"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB+UlEQVR4nO2a7UrDMBSG3xtQ0fm1O9BN76As6BX4Q8vEj1uc29WoTBAFYf7buv2OBE6hhKZNsqRJ5144rFAa+nDOe05SBmz1f9QHMAGQAVgAGAPooWViBMClyOheK5QoIPJYAbhGyyF4G2AGAJYaEHksYy2zMwA/BiDRZWYA4IKuxe/MECaKzCTkiV8Al23NTCIZu5UwTGHsWaHMxEB8AHAI4AhACuAzpjJjNd2pCCPrIBYYptlinyrWGIZuAMxgTohSUuk4ZDdjhsOuU7HWaajWzAwhOBlbpecQc4ZZQHAytDB2mRofmswSIo8PMnaue2rJjcIkmrtYncjV+NBMHELIII3BsDXLSQfE+w6g7zgTVSAyjKx9AG8162aqbwATDxBVIJwyodKdxtovZQ9mAUBEOanU1Vh7XvbgIgBIxwfIOABIumZpjcoe7DVsdk7dSRjbxuwLAOeh228xxAvfUil1KRPvLqZ84tgvdSDcYiBe1UH4gHEJsjKBcFVmU2lOPNJG0na9ZYgd8JROgrJO6F6jEL4OVsMQELaecXFm57aecJmZnYp19kJkwhbmBmqloSFMYF4VE1vsrb5jgDCB+aIpvUuRxgbhawfgxdhNwwSFcAUTBcS6MFFB2MJECWEKEzWELkwrIDbqLxzFbwAjys6crpVn7K02TX94HuvTVJny6AAAAABJRU5ErkJggg==", alt:"git"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADtklEQVR4nO2ZSWgVQRCGP2OCS3CJYoy7uCtiDi6o8aAIikvQi4oGvCiiRo2E6FXJQdxQg4LgUTx4cyPuHhVRD0bcsyDu4IJrTNTnSEMNPOfNm1czb2YSJD8UDNNT1fV3V1dX90AH/l8UAEuBfUAt8Bj4CLSKmOdH0ma+WQL0pp2gC1AGXAJ+A5ZPMToXgFViK3Z0AyqBVwGcTycvga1A17hILAAaQiTglHpgfpQEzNTXREjAKcdl5kNFf+BOjCQskVtAYVgkhst0W20kT8WHrNBP0qjVxtIAFAUl0bWNwsnyCLNAKfpoO3DecsjhICnWy+B2CbspwA7gWRbOmd1+G1As1cGBDN/P05LoptgnBruEoSH0A7gKVACzgNFAvsgYebcROAN8BTYDnR22ihWLXxVilYpRTLf75mlHy+PbAYr+zUB5oouy7Ah9o0pCkaL/F5lmpUwZ1+MiJFKi9GGll5FLSiPLIyRSrvThfDoDBT5K8eoIiRxT+vAL6OlmYKnSwGdZkFFhPPBT6Uupm4H9SmWT56PGSaUve92Ua5XK02Igskzpy1k35afKuMyNgchYJRFT0KbgvULRfBMHhiiJvHNTblUomm86xUBkoiMKPor8cfjT4qZsZ4rZUu+MAPoAA+XZljiIJCNXtoYC6dtUFYOSBjYFn6TxJnAXaJRQeiPPtqwgehz2iIrvScvAzFIKnkjjNUmxWyRPm4p1khw37VGJGjnS11BggmTKRVI575a7MPsIkIKL0rhLqsuDwCngOlAns/FBpnN1xLPRIqPdBDwAbgPngCNyFtrvVaZUKzOFkW8yU2FjncuC9pKdbkbm+jBgpBlYE1KomZJ8j08SRua4GeuuTMFOuSFryXnS0yBfBqMxQL8tXucie504xZxT1soGlM7wW+AEsEFGaiTQK8l2XznHmOvQKikvvgYgYImYkiotSj1SXomcwd8qw65KbihtFMq75iyct5JkYaa015RGsU7apwJfMpAwpNOhJAQy9eKLJyo8DJhcbpcQFyU07J84z4ErwOJMHQDrsyRSrr3duBckLn0gx6MPK4Pc9VOBzwQSLkYSIe4fGwKQSADT/XZ0JI2xT3KxNlgTpx4YFYBITZCO8qTu8tNRZ5/2/di+7PMC8B/09BnLfqG1+yCMP8DDgIdtSOS+nBhDQQ+pNOMmciWKf/F5UmInYiCSAA5FfdExWc4HURGpA2YQE3IlBTc4fvj7xeskfWNrU0zXTSnIkbLldFL54gelorswyz2pAx0gIvwFLXDNiM6zHVAAAAAASUVORK5CYII=", alt:"github"},
-            { src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACYklEQVR4nO3YS4hOYRzH8Y97uSxYKMpGDMo1C5LLQmQ2ysZCkhLKpUwWFhaKmlwXsiCKiEgpwsI1ZTeUlIWSkTSKTMNGMyYzeup56/TyXuc977ym861/nfec533O/3ee5385h4yMjIyMjIxU6C9i/xX9Q01IkkzIUBAyCRNq6NdfzgzEymUuvqMTa/5XIcPxKvGfXjSnIaRW5wqx/h8PoAszBuD7oAi5UGA17w3A90ER8rzI1pyN8RhXqdP1sHxeFBn7K3H8EVewqlGFPKhijkulhNT7XOBYFUI6NKCQhVUIOdAoQiZiEfbhTYUinmBUmOQ8+uocF7Wym8kM1tEADlViP3EHa/O3UU9iUKOuTA/WYSbGRL+H5QvpioN/YFOBFeqLT6GtxA3b4xyPClwP81zDTnwpMdddPIvHodonCYXxBkYmTz7FOcyKv0fHIrMdu2L3OTVeG4GVaMHRaIewFfNjw5djAfbgOFqj88l+KQToEuzA4ThXK/bGwM/RFNuTs7EAJgtmeLCbMTkMvN0AW6eYHVQmLQ3gbCF7nUut5dA0gCBfhjMpiejFYhXysIIbhCB9F4+XY0VKQnargqW4HAPpPb7hE97icUwG2xIBHbLF5xS31Cl1YCw2oDslEdfzsl9VhPw8PX7BmIZ5cfuE1TgR83paAoKdrIWI3Pvy7xQdLfbCFGpWTdkSM0a9RLTF2EuF0Nd8TVlASCj7Y7eQKlNwNYVGsj22IWV/QKgVoe+5GNvnap3/gNNYXY8VKCftNscm8H6sMZ2xxe6OWzHUoJe4hSPYiDklZ87IyMjIyDC4/AH+/zDKPqzragAAAABJRU5ErkJggg==", alt:"docker"},
+  {
+    id: 1,
+    title: "FullStack",
+    description: "I build complete web solutions from frontend to backend.Focused on clean architecture, scalability, and performance.Comfortable turning complex requirements into working products.",
+    stack: [
+      { type: "icon", icon: SiJavascript, alt: "Js" },
+      { type: "icon", icon: SiHtml5, alt: "gtml" },
+      { type: "icon", icon: SiCss3, alt: "Css" },
+      { type: "icon", icon: SiReact, alt: "React" },
+      { type: "icon", icon: SiMongodb, alt: "MongoDb" },
+      { type: "icon", icon: SiNodedotjs, alt: "NodeJs" },
+      { type: "icon", icon: SiExpress, alt: "ExpressJs" },
+      { type: "icon", icon: SiTypescript, alt: "TypeScript" },
+      { type: "icon", icon: SiGit, alt: "Git" },
+      { type: "icon", icon: SiGithub, alt: "Github" },
+      { type: "icon", icon: SiDocker, alt: "Docker" },
+    ],
+    img: "fullstack.png",
+    colors: "#E08D79"
+  },
+  {
+    id: 2,
+    title: "Application",
+    description: "I develop modern applications with real-world use in mind.Strong focus on performance, reliability, and smooth user flow.From idea to deployment, I handle the full development cycle.",
+    stack: [
+      { type: "icon", icon: SiDart, alt: "Dart" },
+      { type: "icon", icon: SiFlutter, alt: "Flutter" },
+      { type: "icon", icon: SiFirebase, alt: "Firebase" },
+    ],
+    img: "application.jpg",
+    colors: "#E2BC53"
+  },
+  {
+    id: 3,
+    title: "UI/UX",
+    description: "I design interfaces that feel intuitive and easy to use.Balancing visual appeal with practical user experience.Every design decision is made to improve usability and clarity.",
+    stack: [
+      { type: "icon", icon: SiFigma, alt: "Figma" },
+    ],
+    img: "cover.png",
+    colors: "#753742"
+  },
+];
 
-        ],
-        img: "/fullstack.png",
-        colors: "#E08D79"
-    },
-
-    {   
-        id: 2,
-        title: "Application",
-        description: "I develop modern applications with real-world use in mind.Strong focus on performance, reliability, and smooth user flow.From idea to deployment, I handle the full development cycle.",
-        stack: [
-            {src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0klEQVR4nO3YP0vDQBzG8S9dCtXqJm5dLeog+AL6BgRfgXvxTdjBta+gdHBz7littOooOAkKopP/B90EkUghgUtI6iW9X+4a+kBoC+m1nz6XO1KY598sA02gB9wDV0AHaDAjqQFt4AvwEo4xqIKj2QKOgJ8JAPW4AKo4khKwA/Q1v7xzmDKwB9xkBFjHrAAHwLsBgBVMHegC34YB6jEEFvLAzHTqFCTdyOsN4E1wennAA9DyFxQjWfWvCRURPL4KYzxgYGrTPPQHDDJuYtN/vgY854AZAYvTIMa/xEcE4s0iZl8ZSIXEYZ5cxZSAuwmQAJP3NXOadtPcjQwQB7HVzCWwpAs514Q4jdmOeeMkiLOY4wwQ5zC1hJsiHYitBeAkDtJOOFkXYgsTyriiTwMQG9MslKbGiWkGz7OZUHqGIXk2E8qtACTazLpQM6FcC0HywITSEYRIT7NQGsIQyWbQbSWIiQ+VaCb2ZmooDJFohiTMQBhiuhl0MRIQkxh0MVIQUxh0MZIQExitqP/F/gpj1AXgxTREzaMgZBpM6rSEIVkxqVOOWZptY0ZZIPO4nIp/4y89zXLD9IsACfaZsyJApDEUBUNRMNZSNbiajewx5mHq/AFh2yFd8CITbgAAAABJRU5ErkJggg==", alt:"dart-language"},
-            {src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA50lEQVR4nO3YMQ6CMBiG4fcCnsbT6KCRwSt0MeEfuYLn8BqexsnEAeNGiCI0Tfq1/G/CxsADbSmA5xXfBXgB/czjCewRyxYA+sFxoAJEi1COUMkRKjlCJXOESOYIkcwRIpkjRDJHiGRrRpjSN3uTGJHtm70RQBiJCgnmhMwcCzUg5mCKQUxhikN8wxSLGK5mJ0RXpxQV8ySqRzQ1DKfUO4DspdgByBRqQMTsADbAGbgDHYKFP4gtcAUeo3PkMe3o7k8NPUnMZ2W6/bj7xa1oIfId0yGYYxDFxO7HjggW8ztol/uivdX3Bp7xmJeHn7BLAAAAAElFTkSuQmCC" ,alt:"flutter"},
-            {src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADaUlEQVR4nOWZS2xOQRTHf6pFPaJazyCoBEGEeiy0XknjkahELBCJBdJ2g2gjYiPsJF4VC0EsWJBY2FQsSoQoG68FUhIhKgjimWjR6sgk50tuJjP3++7j+26/+Cdnc+fMuf+TmTnnzBn4z7AEWEOeogD4DPQA88lDzACUyE3yEFs8DmipJs9w0nDgHtCHPMJ9wwEt69LMqQQeAItIGAOAPxYHngOFjjn6+xPReyxBIDEstJBPyTbHnF2G3gYSxE4fB9qBfob+COBrgNXyYhRwG2gmRlzwcaDVcpiHA98tujqS+WGMZ9tpKYvLgRcO8n+BeY45+yz6r4H+Dv2Jlv9UxUG+TLKvzYHTPvMGAx8M/Y/ABEeSfGexXxeHA6sc5PUWGZ1m7g6P/ntgpkWnAvjk+MfxOBywbQUtDYbeQGCv8U0f7lfAS6DcYrsK+OZzvq7H4cAVi+FnQJGhd0ByxWTj+wpgrMXucuCnD/nUqkWGuY+VbCsvxnvI6IiVDjVAZxryKSmNQr7cYlCviIlLnvEe2dcubHRkdeWQSJFovWHsNzDV0Fls+elhh716Cb2ZkldRI9FRw9ghY7zAUuTpDFpssbXdJxwrH4kUiVo9hvRZGGqM1xk/u2g53Bp7QhBXItfCki80osRWY7xEElNq/JSl4tQlxpEI5JUkuFCY4zHy0ELumGf8hKUe6guciUheRYlE9R4D+qB6Mc0TSQ46Vu9cTOSVXIwC46xPXL8qB7LRMqaLtcsxkldAbRgH9C2qw1J8rQa6HReZQUBLzOQV0BSU/BAhqesgs7Z5Cmy2zNGH+k4WyKswkWiZ3LR0gWZWl2st+iOBR1kir4C3QR3YLVnYC+3MXIvuOKAti+SVyLAgDjRk2POx3aKyJZVBHNBbIh2my9KqHEktMaLCyMK5kKa4yC+QLrXKsbTEQX4p8CMB8ipMJMKSwDK9RWVLSsOS3wR0JUxehX1YqQtxi8qGdErbMRAaQ96i4pZ2YGVQ8lN8Gk65kg5p15glTcYokXr/VwLkm4FJYYnbVqM5R8TbpBmWFVQb7e845Yu8Q2TyhhAJRfIjv55mEOmShoB+FMkpyqRn0x2B/A1gFgljNnArIPE3jltdoqiRNrofcd1n2i+vnr0SxdKFsxV8zY7XGXoj9DXzvCSiu3G9ddnwD494kqDFoNFnAAAAAElFTkSuQmCC", alt:"firebase"}
-
-
-        ],
-        img: "/application.jpg",
-        colors: "#E2BC53"
-    },
-
-    {   id: 3,
-        title: "UI/UX",
-        description: "I design interfaces that feel intuitive and easy to use.Balancing visual appeal with practical user experience.Every design decision is made to improve usability and clarity.",
-        stack: [
-            {src :"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfElEQVR4nO2ZXW6DMBAG5w4NuVaViN6nhRwvBG4SfvoaqJCMivJAMNu1LZdP8lOyxCM7WOOFPfHkCORACXwDw8KYsvSd8Rk3IAMSVxAp0L6YmC3IfDTA2QVEbzGpLSAD8ABOmtvJZiUkIANQAwcNkHzDZCQgA/ClAVJ5ALlpgHQeQFoNkNYDSKMBUnoAKTRAMg8gnxogiVlqVyB34A2lnM1hpQ3yAN5RzskcVlogdxcQUw7msCpWvJbXgIxvxKv5T6htpz2x+shz/WVWP/lIbj4L2kemfLyob81vBOsjE8Sa+l4TRuojtvWNlvZKfeSyoTYL0UeqWHyki8VH2lh8pAxla2VCkDyUy4dE6CO2r99a6zpI6iM2B2rv4rZxq4/MYZZWtnYBIfGR522azerHUZhnqm2nPf/BR4JIKvSRIJIKfSSIHIU+EkzyDRBBglSxgHSxgLSh+IQ0ZSj9DR8+otLfcO0jqv0NVz7ipL+h7SNO+xt/7SN7f2MPv/kBC39E7GnfwCQAAAAASUVORK5CYII=" ,alt:"figma--v1"}
-        ],
-        img: "/cover.png",
-        colors: "#753742"
-    },
-]
-
-const Card = ({ data, index, totalCards }) => {
+// ============================================
+// DESKTOP CARD (Original with scroll animations)
+// ============================================
+const DesktopCard = ({ data, index, totalCards }) => {
   const cardRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
-  
+
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "end start"]
@@ -140,35 +93,34 @@ const Card = ({ data, index, totalCards }) => {
   }, []);
 
   return (
-    <div 
+    <div
       ref={cardRef}
       className="sticky flex items-center justify-center mb-20"
-      style={{ 
+      style={{
         top: `${80 + index * 30}px`,
         height: '75vh'
       }}
     >
       <motion.div
-        style={{ 
+        style={{
           scale,
           filter: blur,
           background: data.colors
         }}
-        className="w-[1000px] h-[600px] bg-gradient-to-br  rounded-3xl shadow-2xl flex overflow-hidden"
-        
+        className="w-[1000px] h-[600px] bg-gradient-to-br rounded-3xl shadow-2xl flex overflow-hidden"
       >
-        <motion.div 
+        <motion.div
           style={{ opacity }}
           className="w-[600px] h-[598px] m-[1px]"
         >
-          <img 
-            src={data.img}  
+          <img
+            src={data.img}
             alt={data.title}
             className="w-full h-full object-cover rounded-l-3xl"
           />
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           style={{ opacity }}
           className="flex-1 p-8 flex flex-col justify-between"
         >
@@ -180,23 +132,23 @@ const Card = ({ data, index, totalCards }) => {
               {data.description}
             </p>
           </div>
-          
+
           <div>
-            <h3 className="text-bold font-[Dancing_Script] font-semibold  mb-3 uppercase tracking-wider">
+            <h3 className="text-bold font-[Dancing_Script] font-semibold mb-3 uppercase tracking-wider">
               Tech Stack
             </h3>
             <div className="flex gap-3 flex-wrap">
-              {data.stack.map((tech, i) => (
-                <div
-                  key={i}
-                  className="w-[50px] h-[50px] bg-white backdrop-blur-sm rounded-2xl shadow-lg flex flex-col items-center justify-center gap-2 border border-slate-700/50 hover:scale-105 transition-transform p-1"
-                >
-                  
-                  <img className="text-xs text-slate-300 font-medium"
-                    src={tech.src}
-                  />
-                </div>
-              ))}
+              {data.stack.map((tech, i) => {
+                const IconComponent = tech.icon;
+                return (
+                  <div
+                    key={i}
+                    className="w-[50px] h-[50px] bg-white backdrop-blur-sm rounded-2xl shadow-lg flex flex-col items-center justify-center gap-1 border border-slate-700/50 hover:scale-105 transition-transform p-1"
+                  >
+                    <IconComponent className="text-2xl text-slate-900" />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </motion.div>
@@ -205,28 +157,141 @@ const Card = ({ data, index, totalCards }) => {
   );
 };
 
+// ============================================
+// MOBILE CARD (With sticky stack effect)
+// ============================================
+const MobileCard = ({ data, index }) => {
+  const cardRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.5, 1],
+    [1, 1, 0.96 - (index * 0.04), 0.96 - (index * 0.04)]
+  );
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.3, 0.5],
+    [0.4, 0.4, 1, 1]
+  );
+
+  const blur = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.3],
+    ["blur(8px)", "blur(8px)", "blur(0px)"]
+  );
+
+  return (
+    <div
+      ref={cardRef}
+      className="sticky mb-8"
+      style={{
+        top: `${60 + index * 20}px`,
+        height: 'auto',
+        minHeight: '500px'
+      }}
+    >
+      <motion.div
+        style={{
+          scale,
+          filter: blur,
+          background: data.colors
+        }}
+        className="mx-4 rounded-2xl shadow-xl overflow-hidden"
+      >
+        <motion.div
+          style={{ opacity }}
+        >
+          {/* Image Section */}
+          <div className="w-full h-48 sm:h-56">
+            <img
+              src={data.img}
+              alt={data.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Content Section */}
+          <div className="p-5 sm:p-6">
+            <h2 className="text-3xl sm:text-4xl font-bold font-[Dancing_Script] mb-3">
+              {data.title}
+            </h2>
+            
+            <p className="font-[Dancing_Script] font-semibold text-sm sm:text-base leading-relaxed mb-4">
+              {data.description}
+            </p>
+
+            {/* Tech Stack */}
+            <div>
+              <h3 className="text-sm font-[Dancing_Script] font-semibold mb-3 uppercase tracking-wider">
+                Tech Stack
+              </h3>
+              <div className="flex gap-2 flex-wrap">
+                {data.stack.map((tech, i) => {
+                  const IconComponent = tech.icon;
+                  return (
+                    <div
+                      key={i}
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white backdrop-blur-sm rounded-xl shadow-md flex items-center justify-center border border-slate-700/30 active:scale-95 transition-transform"
+                    >
+                      <IconComponent className="text-lg sm:text-xl text-slate-900" />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
+
+// ============================================
+// MAIN SKILLS COMPONENT
+// ============================================
 export default function Skills() {
   return (
-    <div className="">
-      
-        <div className="h-70 flex items-center justify-center">
-        <h1 className="text-6xl font-bold font-[Dancing_Script]">
-          I work on 
+    <div>
+      {/* Heading */}
+      <div className="h-40 sm:h-60 lg:h-70 flex items-center justify-center px-4">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Dancing_Script] text-center">
+          I work on
         </h1>
       </div>
-      
-      
-      <div className="relative">
+
+      {/* ============================================
+          DESKTOP VIEW (Original sticky cards)
+          ============================================ */}
+      <div className="hidden lg:block relative">
         {sampleData.map((data, index) => (
-          <Card 
-            key={data.id} 
-            data={data} 
+          <DesktopCard
+            key={data.id}
+            data={data}
             index={index}
             totalCards={sampleData.length}
           />
         ))}
       </div>
-      
+
+      {/* ============================================
+          MOBILE VIEW (Sticky stack cards)
+          ============================================ */}
+      <div className="lg:hidden relative">
+        {sampleData.map((data, index) => (
+          <MobileCard
+            key={data.id}
+            data={data}
+            index={index}
+          />
+        ))}
+      </div>
+
       <div className="h-20"></div>
     </div>
   );
