@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SiCloudinary, SiCss3, SiDart, SiDocker, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGit, SiGithub, SiHtml5, SiJavascript, SiMongodb, SiNodedotjs, SiReact, SiSocketdotio, SiTailwindcss, SiTypescript } from 'react-icons/si';
+import FadeContent from '@/components/FadeContent';
 
 export const sampleData = [
   {
@@ -260,9 +261,11 @@ export default function Skills() {
     <div>
       {/* Heading */}
       <div className="h-40 sm:h-60 lg:h-70 flex items-center justify-center px-4">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Dancing_Script] text-center">
+        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={10}>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Dancing_Script] text-center">
           I work on
         </h1>
+        </FadeContent>
       </div>
 
       {/* ============================================

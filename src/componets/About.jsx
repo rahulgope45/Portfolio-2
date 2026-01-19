@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Trianglyfy from './Trianglyfy';
+import FadeContent from '@/components/FadeContent';
+import AnimatedContent from '@/Animations/AnimatedContent';
 
 
 
 
-const AnimatedContent = ({ children }) => <div>{children}</div>;
-const FadeContent = ({ children }) => <div>{children}</div>;
+
 
 function About() {
     const greet = ["Morning", "Afternoon", "Evening"];
@@ -102,21 +103,22 @@ function About() {
 
                     {/* Mobile Text Section */}
                     <div className="text-center mt-8">
-                        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+                        <FadeContent blur={true} duration={2000} easing="power2.out" initialOpacity={40}>
                             <p className="font-extrabold font-[Dancing_Script] text-[32px] leading-tight">
                                 Hello I'm Rahul!!<br />
                                 I Like to Code<br />
                                 & Draw..
 
-                                <span >
-                                    <div className='flex gap-2 mt-5'>
-                                        <div className="relative w-3 h-3 rounded-full bg-green-400 animate-blink">
-                                            <span className="absolute -inset-2 rounded-full  bg-green-200 blur-xl opacity-60"></span>
-                                        </div>
-                                        <p className='text-[20px]'>Available for Work</p>
-                                    </div>
-                                </span>
+                                
                             </p>
+                        </FadeContent>
+                        <FadeContent blur={true} duration={1000} easing="power2.out" initialOpacity={10}>
+                            <div className='flex gap-2 mt-5'>
+                                <div className="relative w-3 h-3 rounded-full bg-green-400 animate-blink">
+                                    <span className="absolute -inset-2 rounded-full  bg-green-200 blur-xl opacity-60"></span>
+                                </div>
+                                <p className='text-[20px]'>Available for Work</p>
+                            </div>
                         </FadeContent>
                     </div>
                 </div>

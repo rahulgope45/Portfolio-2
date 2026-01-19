@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import { fullStack, frontend, application } from '@/lib/data';
 import { SiGithub, SiReact, SiNodedotjs, SiMongodb, SiTailwindcss } from 'react-icons/si';
+import AnimatedContent from '@/Animations/AnimatedContent';
 
-// Mock data for demo
-const dataMap = {
-  fullStack,
-  frontend,
-  application
-};
 
 // const fullStack = [mockProject, { ...mockProject, title: "Social Media App" }];
 // const frontend = [{ ...mockProject, title: "Portfolio Website" }];
 // const application = [{ ...mockProject, title: "Mobile App" }];
 
-const AnimatedContent = ({ children }) => <div>{children}</div>;
+
 
 function Projects() {
   const [category, setCategory] = useState('fullStack');

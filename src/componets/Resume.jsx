@@ -1,4 +1,5 @@
 import AnimatedContent from '@/Animations/AnimatedContent'
+import FadeContent from '@/components/FadeContent'
 import React from 'react'
 
 function Resume() {
@@ -9,9 +10,11 @@ function Resume() {
           id='resume'
         >
           {/* Heading */}
-          <h1 className="font-[Dancing_Script] font-extrabold text-4xl ">
+         <FadeContent>
+           <h1 className="font-[Dancing_Script] font-extrabold text-4xl ">
             Get My Resume
           </h1>
+         </FadeContent>
 
           {/* Sub text */}
 
