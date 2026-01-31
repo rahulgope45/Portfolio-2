@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import { Routes, Route } from 'react-router'
 import Navbar from './componets/Navbar'
 import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from './context/ThemeProvider'
 
 function App() {
 
@@ -27,7 +28,8 @@ function App() {
   }
 
   return (
-    <div className='lg:ml-[190px] lg:mr-[190px] mt-4 '>
+    <ThemeProvider>
+      <div className='lg:ml-[190px] lg:mr-[190px] mt-4 '>
       
       <Navbar scrollToSection={scrollToSection} />
       <Routes>
@@ -35,6 +37,7 @@ function App() {
       </Routes>
       <Toaster/>
     </div>
+    </ThemeProvider>
   )
 }
 

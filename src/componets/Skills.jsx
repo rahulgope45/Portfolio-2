@@ -258,7 +258,7 @@ const MobileCard = ({ data, index }) => {
 // ============================================
 export default function Skills() {
   return (
-    <div>
+    <div className='relative'>
       {/* Heading */}
       <div className="h-40 sm:h-60 lg:h-70 flex items-center justify-center px-4">
         <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={10}>
