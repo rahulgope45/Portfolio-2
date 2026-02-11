@@ -93,7 +93,7 @@ const themes = [
 
   // Metallic
   { name: 'Gold', bg: '#FFD700', text: '#111827', accent: '#B45309' },
-,
+
 ];
 
 
