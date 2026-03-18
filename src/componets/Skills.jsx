@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { SiCloudinary, SiCss3, SiDart, SiDocker, SiExpress, SiFigma, SiFirebase, SiFlutter, SiGit, SiGithub, SiHtml5, SiJavascript, SiMongodb, SiNodedotjs, SiReact, SiSocketdotio, SiTailwindcss, SiTypescript } from 'react-icons/si';
+import { SiCloudinary, SiCss3, SiDart, SiDocker, SiExpress, SiFastapi, SiFigma, SiFirebase, SiFlutter, SiGit, SiGithub, SiHtml5, SiJavascript, SiMongodb, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiSocketdotio, SiTailwindcss, SiTypescript } from 'react-icons/si';
 import FadeContent from '@/components/FadeContent';
 
 export const sampleData = [
@@ -9,17 +9,21 @@ export const sampleData = [
     title: "FullStack",
     description: "I build complete web solutions from frontend to backend.Focused on clean architecture, scalability, and performance.Comfortable turning complex requirements into working products.",
     stack: [
-      { type: "icon", icon: SiJavascript, alt: "Js" },
-      { type: "icon", icon: SiHtml5, alt: "gtml" },
+      { type: "icon", icon: SiJavascript, alt: "JS" },
+      { type: "icon", icon: SiHtml5, alt: "Html" },
       { type: "icon", icon: SiCss3, alt: "Css" },
       { type: "icon", icon: SiReact, alt: "React" },
-      { type: "icon", icon: SiMongodb, alt: "MongoDb" },
-      { type: "icon", icon: SiNodedotjs, alt: "NodeJs" },
-      { type: "icon", icon: SiExpress, alt: "ExpressJs" },
-      { type: "icon", icon: SiTypescript, alt: "TypeScript" },
+      { type: "icon", icon: SiMongodb, alt: "M" },
+      { type: "icon", icon: SiPostgresql, alt: "Post" },
+      { type: "icon", icon: SiNodedotjs, alt: "Node" },
+      { type: "icon", icon: SiExpress, alt: "Express" },
+      { type: "icon", icon: SiTailwindcss, alt: "Tailwind " },
+      { type: "icon", icon: SiPython, alt: "Python" },
+      { type: "icon", icon: SiFastapi, alt: "FastApi" },
+      { type: "icon", icon: SiDocker, alt: "Docker" },
+      { type: "icon", icon: SiTypescript, alt: "TS" },
       { type: "icon", icon: SiGit, alt: "Git" },
       { type: "icon", icon: SiGithub, alt: "Github" },
-      { type: "icon", icon: SiDocker, alt: "Docker" },
     ],
     img: "fullstack.png",
     colors: "#E08D79"
@@ -96,7 +100,7 @@ const DesktopCard = ({ data, index, totalCards }) => {
   return (
     <div
       ref={cardRef}
-      className="sticky flex items-center justify-center mb-20"
+      className="sticky relative flex items-center justify-center mb-20"
       style={{
         top: `${80 + index * 30}px`,
         height: '75vh'
@@ -222,7 +226,7 @@ const MobileCard = ({ data, index }) => {
             <h2 className="text-3xl sm:text-4xl font-bold font-[Dancing_Script] mb-3">
               {data.title}
             </h2>
-            
+
             <p className="font-[Dancing_Script] font-semibold text-sm sm:text-base leading-relaxed mb-4">
               {data.description}
             </p>
@@ -263,8 +267,8 @@ export default function Skills() {
       <div className="h-40 sm:h-60 lg:h-70 flex items-center justify-center px-4">
         <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={10}>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Dancing_Script] text-center">
-          I work on
-        </h1>
+            I work on
+          </h1>
         </FadeContent>
       </div>
 
