@@ -22,7 +22,7 @@ function Resume() {
           {/* Button */}
           <AnimatedContent>
             <a
-              href="/RahuldevA16.pdf"
+              href="/RahuldevA17.pdf"
               download
               className="inline-flex items-center justify-center
                    px-6 py-2 rounded-full
@@ -55,7 +55,7 @@ function Resume() {
           {/* Button */}
           <AnimatedContent>
             <a
-              href="/Rahuldevjan15.pdf"
+              href="/RahuldevA17.pdf"
               download
               className="inline-flex items-center justify-center
                    px-6 py-2 rounded-full
