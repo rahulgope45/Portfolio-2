@@ -48,7 +48,7 @@ function Home() {
       <div className="border-t-5 border-dashed border-gray-400 mb-20"></div>
       <AnimatedContent>
            <FadeContent>
-        <div className='font-extrabold font-[Dancing_Script] text-7xl text-center mb-30'>
+        <div className='font-extrabold font-[Dancing_Script] text-7xl text-center mb-s0'>
 
          <p> Bye :(</p>  
       </div>
