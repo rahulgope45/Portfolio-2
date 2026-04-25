@@ -1,122 +1,80 @@
-import { createContext,useState,useEffect,useContext } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 const ThemeContext = createContext();
 
 const themes = [
-  // Ultra Dark
-  { name: 'Midnight', bg: '#0F172A', text: '#E5E7EB', accent: '#38BDF8' },
-  { name: 'Obsidian', bg: '#111827', text: '#F3F4F6', accent: '#A78BFA' },
-  { name: 'Carbon', bg: '#141414', text: '#EDEDED', accent: '#F97316' },
-  { name: 'Pitch Black', bg: '#000000', text: '#FFFFFF', accent: '#22C55E' },
+    
+{ name: 'Carbon', bg: '#141414', text: '#EDEDED', accent: '#F97316' },
 
-  // Dark Slate / Steel
+  // --- PHASE 1: Carbon to Deep Slate (15 Steps) ---
+  // Gradually shifting from neutral black to cool navy-slate
+  { name: 'Carbon-1', bg: '#151517', text: '#EDEEF1', accent: '#F97321' },
+  { name: 'Carbon-2', bg: '#151719', text: '#EDEEF2', accent: '#FA732D' },
+  { name: 'Carbon-3', bg: '#16181C', text: '#EEF0F4', accent: '#FA7338' },
+  { name: 'Carbon-4', bg: '#171A1F', text: '#EEF1F5', accent: '#FA7344' },
+  { name: 'Carbon-5', bg: '#171B21', text: '#EEF1F6', accent: '#FB734F' },
+  { name: 'Carbon-6', bg: '#181D24', text: '#EFF2F8', accent: '#FB725B' },
+  { name: 'Carbon-7', bg: '#191E27', text: '#EFF3F9', accent: '#FB7266' },
+  { name: 'Carbon-8', bg: '#192029', text: '#EFF4FA', accent: '#FB7272' },
+  { name: 'Carbon-9', bg: '#1A212C', text: '#F0F4FB', accent: '#FC727D' },
+  { name: 'Carbon-10', bg: '#1B232F', text: '#F0F5FC', accent: '#FC7189' },
+  { name: 'Carbon-11', bg: '#1B2432', text: '#F0F5FD', accent: '#FC7194' },
+  { name: 'Carbon-12', bg: '#1C2534', text: '#F1F5FE', accent: '#FC719F' },
+  { name: 'Carbon-13', bg: '#1D2737', text: '#F1F5FF', accent: '#FC71AA' },
+  { name: 'Carbon-14', bg: '#1D2839', text: '#F1F5F9', accent: '#FB7180' },
+  { name: 'Carbon-15', bg: '#1E283A', text: '#F1F5F9', accent: '#FB7183' },
+
   { name: 'Deep Slate', bg: '#1E293B', text: '#F1F5F9', accent: '#FB7185' },
-  { name: 'Charcoal', bg: '#1F2937', text: '#E5E7EB', accent: '#FACC15' },
-  { name: 'Gunmetal', bg: '#273449', text: '#FAFAFA', accent: '#C084FC' },
-  { name: 'Steel', bg: '#334155', text: '#F8FAFC', accent: '#4ADE80' },
-  { name: 'Ashen Night', bg: '#2D3748', text: '#EDF2F7', accent: '#63B3ED' },
 
-  // Cool Dark
-  { name: 'Deep Ocean', bg: '#0F3057', text: '#E0F2FE', accent: '#38BDF8' },
-  { name: 'Nordic Blue', bg: '#1B2A41', text: '#E5E7EB', accent: '#60A5FA' },
-  { name: 'Abyss', bg: '#020617', text: '#CBD5F5', accent: '#818CF8' },
+  // --- PHASE 2: Deep Slate to Pearl (15 Steps) ---
+  // Gradually lifting lightness and shifting accent from Rose to Amber
+  { name: 'Slate-1', bg: '#2B3547', text: '#E2E6EF', accent: '#FB747D' },
+  { name: 'Slate-2', bg: '#394252', text: '#D3D8E5', accent: '#FB7775' },
+  { name: 'Slate-3', bg: '#464E5E', text: '#C4C9DA', accent: '#FA7A6D' },
+  { name: 'Slate-4', bg: '#545B6A', text: '#B5BBCE', accent: '#FA7D65' },
+  { name: 'Slate-5', bg: '#616775', text: '#A6ADC3', accent: '#F9805D' },
+  { name: 'Slate-6', bg: '#6F7481', text: '#979EB9', accent: '#F98355' },
+  { name: 'Slate-7', bg: '#7C818D', text: '#8890AE', accent: '#F8864D' },
+  { name: 'Slate-8', bg: '#8A8D98', text: '#7981A4', accent: '#F88945' },
+  { name: 'Slate-9', bg: '#979AA4', text: '#6A7398', accent: '#F78C3D' },
+  { name: 'Slate-10', bg: '#A5A7B0', text: '#5B648E', accent: '#F78F35' },
+  { name: 'Slate-11', bg: '#B2B3BB', text: '#4C5683', accent: '#F6922D' },
+  { name: 'Slate-12', bg: '#C0C0C7', text: '#3D4779', accent: '#F69525' },
+  { name: 'Slate-13', bg: '#CDCDD3', text: '#2E396E', accent: '#F5981D' },
+  { name: 'Slate-14', bg: '#DBDBDF', text: '#1F2A64', accent: '#F59B15' },
+  { name: 'Slate-15', bg: '#E0E1E5', text: '#101B3C', accent: '#F59D0D' },
 
-  // Neutral Dark
-  { name: 'Foggy Night', bg: '#374151', text: '#F9FAFB', accent: '#34D399' },
-  { name: 'Smokey Quartz', bg: '#3F3F46', text: '#FAFAFA', accent: '#FB923C' },
-  { name: 'Iron', bg: '#44403C', text: '#FAFAF9', accent: '#A3E635' },
-
-  // Mid Gray
-  { name: 'Fog', bg: '#4B5563', text: '#FFFFFF', accent: '#F472B6' },
-  { name: 'Clouded Sky', bg: '#6B7280', text: '#FFFFFF', accent: '#22C55E' },
-  { name: 'Silver Smoke', bg: '#9CA3AF', text: '#111827', accent: '#2563EB' },
-  { name: 'Dust', bg: '#A1A1AA', text: '#111827', accent: '#E11D48' },
-
-  // Soft Light
-  { name: 'Mist', bg: '#CBD5E1', text: '#020617', accent: '#9333EA' },
   { name: 'Pearl', bg: '#E5E7EB', text: '#020617', accent: '#F59E0B' },
-  { name: 'Soft Dawn', bg: '#E7E5E4', text: '#020617', accent: '#EF4444' },
-  { name: 'Pale Sky', bg: '#E2E8F0', text: '#020617', accent: '#14B8A6' },
-
-  // Bright / Clean
-  { name: 'Ivory', bg: '#FAFAF9', text: '#111827', accent: '#F97316' },
-  { name: 'Snowfall', bg: '#F8FAFC', text: '#020617', accent: '#22C55E' },
-  { name: 'Frost', bg: '#F1F5F9', text: '#020617', accent: '#3B82F6' },
-  { name: 'White Smoke', bg: '#FDFDFD', text: '#020617', accent: '#EC4899' },
-  { name: 'Pure White', bg: '#FFFFFF', text: '#020617', accent: '#4F46E5' },
-
-  // Pastel / Soft Color
-  { name: 'Rose Cloud', bg: '#FFE4E6', text: '#020617', accent: '#E11D48' },
-  { name: 'Lavender Mist', bg: '#EDE9FE', text: '#020617', accent: '#7C3AED' },
-  { name: 'Mint Breeze', bg: '#ECFDF5', text: '#020617', accent: '#10B981' },
-  { name: 'Sky Wash', bg: '#E0F2FE', text: '#020617', accent: '#0284C7' },
-  { name: 'Peach Glow', bg: '#FFF1E6', text: '#020617', accent: '#EA580C' },
-
-  // Warm Light
-  { name: 'Sand', bg: '#FAF3E0', text: '#1C1917', accent: '#D97706' },
-  { name: 'Vanilla', bg: '#FEFCE8', text: '#1C1917', accent: '#CA8A04' },
-  { name: 'Warm Linen', bg: '#F5F5F4', text: '#1C1917', accent: '#B45309' },
-
-  // Extra Bright
-  { name: 'Bright Day', bg: '#E5E5E5', text: '#020617', accent: '#FACC15' },
-  { name: 'Paper', bg: '#F9FAFB', text: '#020617', accent: '#2563EB' },
-
-  // Earth Tones
-  { name: 'Terra Cotta', bg: '#E07A5F', text: '#FFF7ED', accent: '#3D405B' },
-  { name: 'Olive Grove', bg: '#556B2F', text: '#F9FAF9', accent: '#FFD700' },
-  { name: 'Forest Floor', bg: '#2E4600', text: '#F0FFF4', accent: '#9AE6B4' },
-  { name: 'Clay', bg: '#B5651D', text: '#FFF8F0', accent: '#FFB347' },
-
-  // Jewel Tones
-  { name: 'Emerald', bg: '#064E3B', text: '#ECFDF5', accent: '#10B981' },
-  { name: 'Sapphire', bg: '#0F172A', text: '#E0F2FE', accent: '#3B82F6' },
-  { name: 'Ruby', bg: '#7F1D1D', text: '#FEE2E2', accent: '#EF4444' },
-  { name: 'Amethyst', bg: '#4B0082', text: '#F5F3FF', accent: '#A78BFA' },
-
-  // Neon / Vibrant
-  { name: 'Neon Pink', bg: '#FF007F', text: '#FDFDFD', accent: '#00FFFF' },
-  { name: 'Electric Blue', bg: '#0000FF', text: '#FDFDFD', accent: '#39FF14' },
-  { name: 'Cyber Lime', bg: '#CCFF00', text: '#111827', accent: '#FF3131' },
-  { name: 'Hot Magenta', bg: '#FF1DCE', text: '#FDFDFD', accent: '#00BFFF' },
-
-  // Seasonal
-  { name: 'Spring Bloom', bg: '#FDE68A', text: '#1C1917', accent: '#84CC16' },
-  { name: 'Summer Sky', bg: '#60A5FA', text: '#020617', accent: '#F59E0B' },
-  { name: 'Autumn Leaf', bg: '#D97706', text: '#FFF7ED', accent: '#DC2626' },
-  { name: 'Winter Chill', bg: '#1E3A8A', text: '#E0F2FE', accent: '#38BDF8' },
-
-  // Gradient Inspired
-  { name: 'Sunset', bg: '#FF7E5F', text: '#FFF7ED', accent: '#FEB47B' },
-  { name: 'Aurora', bg: '#0F2027', text: '#F0FFF4', accent: '#2C5364' },
-  { name: 'Galaxy', bg: '#1A1A2E', text: '#E5E7EB', accent: '#C084FC' },
-  { name: 'Coral Reef', bg: '#FF6F61', text: '#FFF7ED', accent: '#00CED1' },
-
-  // Metallic
-  { name: 'Gold', bg: '#FFD700', text: '#111827', accent: '#B45309' },
 
 ];
 
 
-export const ThemeProvider = ({children})=>{
-    const [currentThemeIndex,setCurrentThemeIndex] = useState(0);
+export const ThemeProvider = ({ children }) => {
+    const [currentThemeIndex, setCurrentThemeIndex] = useState(() => {
+        const savedIndex = localStorage.getItem("themeIndex")
+        return savedIndex ? parseInt(savedIndex, 10) : 0;
+    });
     const currentTheme = themes[currentThemeIndex];
 
-    useEffect(()=>{
+
+    useEffect(() => {
         document.body.style.backgroundColor = currentTheme.bg;
         document.body.style.color = currentTheme.text;
         document.body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
-    },[currentTheme]);
 
-    return(
-        <ThemeContext.Provider value={{currentThemeIndex,setCurrentThemeIndex,currentTheme,themes}}>
+        localStorage.setItem("themeIndex",currentThemeIndex)
+    }, [currentTheme,currentThemeIndex]);
+
+    return (
+        <ThemeContext.Provider value={{ currentThemeIndex, setCurrentThemeIndex, currentTheme, themes }}>
             {children}
         </ThemeContext.Provider>
     );
 };
 
-export const useTheme = () =>{
-    const context =useContext(ThemeContext);
-    if(!context){
+export const useTheme = () => {
+    const context = useContext(ThemeContext);
+    if (!context) {
         throw new Error('useTheme must be used within ThemeProvide');
     }
     return context;
