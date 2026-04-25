@@ -34,7 +34,7 @@ function Resume() {
           className="inline-flex items-center justify-center gap-3
                      px-8 py-3 rounded-full border-2 border-black
                      font-[Dancing_Script] font-bold text-lg
-                     bg-transparent text-black
+                      text-black bg-amber-100
                      hover:bg-black hover:text-white
                      transition-colors duration-300 shadow-sm"
         >

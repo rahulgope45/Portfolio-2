@@ -57,7 +57,7 @@ const ContactMe = () => {
               name="name"
               required
               placeholder="Your name"
-              className="w-full px-4 py-2 border-2 rounded-lg focus:outline-none focus:border-black transition"
+              className="w-full px-4 py-2 border-2 rounded-lg focus:outline-none focus:border-black bg-amber-100 text-black transition"
             />
           </div>
 
@@ -68,7 +68,7 @@ const ContactMe = () => {
               name="email"
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-2 border-2 rounded-lg focus:outline-none focus:border-black transition"
+              className="w-full px-4 py-2 border-2 rounded-lg focus:outline-none focus:border-black  bg-amber-100 text-black transition"
             />
           </div>
 
@@ -79,7 +79,7 @@ const ContactMe = () => {
               rows="4"
               required
               placeholder="Your message..."
-              className="w-full px-4 py-2 border-2 rounded-lg focus:outline-none focus:border-black transition resize-none"
+              className="w-full px-4 py-2 border-2 rounded-lg focus:outline-none focus:border-black  bg-amber-100 text-black transition resize-none"
             />
           </div>
 
