@@ -54,7 +54,7 @@ function About() {
                         <h2 className="font-extrabold font-[Dancing_Script] text-4xl md:text-5xl lg:text-6xl leading-tight">
                             Hello, I'm Rahul!<br />
                             I Love to Code<br />
-                            <span className="text-red-600">& Draw.</span>
+                            <span className="text-amber-600">& Draw.</span>
                         </h2>
                     </FadeContent>
 

@@ -32,7 +32,7 @@ const themes = [
   { name: 'Slate-2', bg: '#394252', text: '#D3D8E5', accent: '#FB7775' },
   { name: 'Slate-3', bg: '#464E5E', text: '#C4C9DA', accent: '#FA7A6D' },
   { name: 'Slate-4', bg: '#545B6A', text: '#B5BBCE', accent: '#FA7D65' },
-  { name: 'Slate-5', bg: '#616775', text: '#A6ADC3', accent: '#F9805D' },
+  
   { name: 'Slate-6', bg: '#6F7481', text: '#979EB9', accent: '#F98355' },
   { name: 'Slate-7', bg: '#7C818D', text: '#8890AE', accent: '#F8864D' },
   { name: 'Slate-8', bg: '#8A8D98', text: '#7981A4', accent: '#F88945' },

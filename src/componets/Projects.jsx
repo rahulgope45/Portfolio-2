@@ -25,7 +25,7 @@ function Projects() {
   };
 
   return (
-    <section className="w-full flex flex-col items-center gap-10 py-20 px-4 overflow-hidden" id="projects">
+    <section className="w-full flex flex-col items-center gap-10 py-20 px-4 overflow-hidden " id="projects">
       {/* --- Section Heading --- */}
       <motion.h1 
         initial={{ opacity: 0, y: 20 }}
@@ -37,12 +37,12 @@ function Projects() {
       </motion.h1>
 
       {/* --- Category Selector --- */}
-      <div className="flex gap-3 md:gap-6">
+      <div className="flex gap-3 md:gap-6 ">
         {Object.keys(dataMap).map((cat) => (
           <button
             key={cat}
             onClick={() => handleCategoryChange(cat)}
-            className={`relative px-6 py-2 rounded-full text-sm md:text-base font-bold font-[Dancing_Script] transition-colors duration-300 ${
+            className={`relative px-6 py-2 rounded-full text-sm md:text-base text-yellow-700 font-bold font-[Dancing_Script] transition-colors duration-300 ${
               category === cat ? "text-white" : "text-black border border-black/10"
             }`}
           >
