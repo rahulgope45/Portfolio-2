@@ -1,160 +1,79 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Trianglyfy from './Trianglyfy';
 import FadeContent from '@/components/FadeContent';
 import AnimatedContent from '@/Animations/AnimatedContent';
 
-
-
-
-
-
 function About() {
-    const greet = ["Morning", "Afternoon", "Evening"];
     const [time, setTime] = useState("Hello");
 
-    function whatTime() {
-        const hour = new Date().getHours();
-        if (hour >= 5 && hour < 12) {
-            setTime(greet[0]);
-        } else if (hour >= 12 && hour < 18) {
-            setTime(greet[1]);
-        } else {
-            setTime(greet[2]);
-        }
-    }
-
     useEffect(() => {
-        whatTime();
+        const hour = new Date().getHours();
+        if (hour >= 5 && hour < 12) setTime("Good Morning");
+        else if (hour >= 12 && hour < 18) setTime("Good Afternoon");
+        else setTime("Good Evening");
     }, []);
 
     return (
-        <div className="mt-[100px] mb-10" id="about">
-            {/* ============================================
-          DESKTOP SECTION (hidden on mobile)
-          ============================================ */}
-            <div className="hidden lg:block">
-                <div className="flex items-center justify-between lg:gap-[475px]">
-                    <div className="relative">
-                        <div className="absolute top-[34px] left-[-4px] z-0">
-                            <div className="w-[500px] h-[500px] bg-red-900 rounded-full"></div>
-                        </div>
-                        {/* Image[140,245] and circle */}
-                        <div className="w-[300px] h-[300px] relative">
-                            <Trianglyfy />
-                        </div>
-                        <div className="absolute top-[200px] left-[300px] z-5">
-                            <AnimatedContent>
-                                <div className="relative bg-red-500 text-white px-6 py-3 w-fit font-[Dancing_Script] font-semibold text-lg">
-                                    {time}
-                                    <div className="absolute -left-4 top-[50%] w-0 h-0 border-t-[12px] border-b-[12px] border-r-[24px] border-t-transparent border-b-transparent border-r-red-500 transform rotate-[340deg]"></div>
-                                </div>
-                            </AnimatedContent>
-                        </div>
+        <section className="mt-[100px] mb-20 px-6 max-w-7xl mx-auto" id="about">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+                
+                {/* Visual Section: Image & Background Circle */}
+                <div className="relative group">
+                    {/* Background Glow Circle */}
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="absolute -inset-4 lg:-inset-10 bg-red-900/20 rounded-full blur-3xl z-0"
+                    />
+                    
+                    <div className="relative z-10 w-[260px] h-[260px] md:w-[350px] md:h-[350px]">
+                        <Trianglyfy />
                     </div>
-                    <div>
-                        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
-                            {/* About */}
-                            <div className="font-extrabold font-[Dancing_Script] text-[40px]">
-                                Hello I'm Rahul!!<br />
-                                I Like to Code<br />
-                                & Draw..
-                                <span >
-                                    <div className='flex gap-2 mt-5'>
-                                        <div className="relative w-3 h-3 rounded-full bg-green-400 animate-blink">
-                                            <span className="absolute -inset-2 rounded-full  bg-green-200 blur-xl opacity-60"></span>
-                                        </div>
-                                        <p className='text-[20px]'>Available for Work</p>
-                                    </div>
-                                </span>
-                            </div>
-                        </FadeContent>
-                    </div>
+
+                    {/* Dynamic Greeting Badge */}
+                    <motion.div 
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5, type: "spring" }}
+                        className="absolute -right-7 bottom-[-90px] lg:bottom-[-5] z-20"
+                    >
+                        <div className="relative bg-red-600 text-white px-6 py-2 rounded-lg shadow-xl font-[Dancing_Script] font-bold text-lg">
+                            {time}
+                            {/* Speech bubble tail */}
+                            <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-0 h-0 
+                                          border-t-[8px] border-b-[8px] border-r-[12px] 
+                                          border-t-transparent border-b-transparent border-r-red-600" />
+                        </div>
+                    </motion.div>
                 </div>
-            </div>
 
-            {/* ============================================
-          MOBILE VIEW (hidden on desktop)
-          ============================================ */}
-            <div className="lg:hidden">
-                <div className="flex flex-col items-center gap-8 px-4">
-                    {/* Mobile Image Section */}
-                    <div className="relative w-full max-w-[280px]">
-                        {/* Background circle - scaled down for mobile */}
-                        <div className="absolute top-[20px] left-[50%] transform -translate-x-1/2 z-0">
-                            <div className="w-[300px] h-[300px] bg-red-900 rounded-full opacity-80"></div>
-                        </div>
+                {/* Text Content Section */}
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+                    <FadeContent blur={true} duration={1000}>
+                        <h2 className="font-extrabold font-[Dancing_Script] text-4xl md:text-5xl lg:text-6xl leading-tight">
+                            Hello, I'm Rahul!<br />
+                            I Love to Code<br />
+                            <span className="text-red-600">& Draw.</span>
+                        </h2>
+                    </FadeContent>
 
-                        {/* Image container - scaled for mobile */}
-                        <div className="w-full aspect-square relative z-10 max-w-[240px] mx-auto">
-                            <Trianglyfy />
-                        </div>
-
-                        {/* Greeting badge - repositioned for mobile */}
-                        <div className="absolute -bottom-4 left-[50%] transform -translate-x-1/2 z-20">
-                            <AnimatedContent>
-                                <div className="relative bg-red-500 text-white px-5 py-2.5 w-fit font-[Dancing_Script] font-semibold text-base shadow-lg">
-                                    {time}
-                                    {/* Arrow pointing up instead of left */}
-                                    <div className="absolute left-[50%] -translate-x-1/2 -top-3 w-0 h-0 border-l-[10px] border-r-[10px] border-b-[16px] border-l-transparent border-r-transparent border-b-red-500"></div>
-                                </div>
-                            </AnimatedContent>
-                        </div>
-                    </div>
-
-                    {/* Mobile Text Section */}
-                    <div className="text-center mt-8">
-                        <FadeContent blur={true} duration={2000} delay={200} easing="power2.out" initialOpacity={40}>
-                            <p className="font-extrabold font-[Dancing_Script] text-[32px] leading-tight">
-                                Hello I'm Rahul!!<br />
-                                I Like to Code<br />
-                                & Draw..
-
-                                
+                    {/* Status Indicator */}
+                    <AnimatedContent>
+                        <div className="flex items-center gap-3 bg-white/50 backdrop-blur-sm border border-black/5 py-2 px-4 rounded-full shadow-sm">
+                            <div className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </div>
+                            <p className="font-[Dancing_Script] font-bold text-xl text-gray-800">
+                                Available for Work
                             </p>
-                        </FadeContent>
-                        <FadeContent blur={true} duration={1000} delay={1000} easing="power2.out" initialOpacity={10}>
-                            <div className='flex gap-2 mt-5'>
-                                <div className="relative w-3 h-3 rounded-full bg-green-400 animate-blink">
-                                    <span className="absolute -inset-2 rounded-full  bg-green-200 blur-xl opacity-60"></span>
-                                </div>
-                                <p className='text-[20px]'>Available for Work</p>
-                            </div>
-                        </FadeContent>
-                    </div>
+                        </div>
+                    </AnimatedContent>
                 </div>
-            </div>
 
-            {/* ============================================
-          TABLET VIEW (optional - between mobile and desktop)
-          ============================================ */}
-            <style>{`
-        @media (min-width: 640px) and (max-width: 1023px) {
-          .lg\\:hidden .relative.w-full.max-w-\\[280px\\] {
-            max-width: 320px;
-          }
-          
-          .lg\\:hidden .font-\\[Dancing_Script\\].text-\\[32px\\] {
-            font-size: 36px;
-          }
-        }
-        
-        /* Small mobile devices */
-        @media (max-width: 380px) {
-          .lg\\:hidden .relative.w-full.max-w-\\[280px\\] {
-            max-width: 220px;
-          }
-          
-          .lg\\:hidden .w-\\[300px\\].h-\\[300px\\] {
-            width: 250px;
-            height: 250px;
-          }
-          
-          .lg\\:hidden .font-\\[Dancing_Script\\].text-\\[32px\\] {
-            font-size: 28px;
-          }
-        }
-      `}</style>
-        </div>
+            </div>
+        </section>
     );
 }
 

@@ -264,11 +264,11 @@ export default function Skills() {
     <div className='relative'>
       {/* Heading */}
       <div className="h-40 sm:h-60 lg:h-70 flex items-center justify-center px-4">
-        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={10}>
+       
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Dancing_Script] text-center">
             I work on
           </h1>
-        </FadeContent>
+        
       </div>
 
       {/* ============================================
