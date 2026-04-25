@@ -35,7 +35,7 @@ function Projects() {
   };
 
   const handlePrev = () => {
-    setIndex(0);
+    setIndex(prev =>prev -1);
   };
 
   return (

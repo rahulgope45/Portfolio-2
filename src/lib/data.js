@@ -1,4 +1,4 @@
-import { SiCloudinary, SiDart, SiDocker, SiExpress, SiFlutter, SiMongodb, SiNodedotjs, SiReact, SiSocketdotio, SiTailwindcss, SiNextdotjs, SiTypescript, SiPostgresql, SiFastapi, SiHuggingface, SiJavascript, SiHtml5, SiCss3, SiPython, SiGithub, SiGit, SiFigma } from 'react-icons/si'
+import { SiCloudinary, SiDart, SiDocker, SiExpress, SiFlutter, SiMongodb, SiNodedotjs, SiReact, SiSocketdotio, SiTailwindcss, SiNextdotjs, SiTypescript, SiPostgresql, SiFastapi, SiHuggingface, SiJavascript, SiHtml5, SiCss3, SiPython, SiGithub, SiGit, SiFigma, SiPrisma } from 'react-icons/si'
 
 
 
@@ -68,7 +68,8 @@ export const fullStack = [
       { type: "icon", icon: SiReact, alt: "R" },
       { type: "icon", icon: SiTypescript, alt: "T" },
       { type: "icon", icon: SiPostgresql, alt: "M" },
-      { type: "icon", icon: SiFastapi, alt: "F" },
+      { type: "icon", icon: SiPrisma, alt: "M" },
+      { type: "icon", icon: SiExpress, alt: "F" },
       { type: "icon", icon: SiHuggingface, alt: "H" },
       { type: "icon", icon: SiDocker, alt: "docker" },
       ,

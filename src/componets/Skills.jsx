@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { SiCloudinary, SiCss3, SiDart, SiDocker, SiExpress, SiFastapi, SiFigma, SiFirebase, SiFlutter, SiGit, SiGithub, SiHtml5, SiJavascript, SiMongodb, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiSocketdotio, SiTailwindcss, SiTypescript } from 'react-icons/si';
+import { SiClaude, SiCloudinary, SiCss3, SiDart, SiDocker, SiExpress, SiFastapi, SiFigma, SiFirebase, SiFlutter, SiGit, SiGithub, SiHtml5, SiJavascript, SiMongodb, SiNodedotjs, SiPostgresql, SiPython, SiReact, SiSocketdotio, SiTailwindcss, SiTypescript } from 'react-icons/si';
 import FadeContent from '@/components/FadeContent';
 
 export const sampleData = [
@@ -19,7 +19,6 @@ export const sampleData = [
       { type: "icon", icon: SiExpress, alt: "Express" },
       { type: "icon", icon: SiTailwindcss, alt: "Tailwind " },
       { type: "icon", icon: SiPython, alt: "Python" },
-      { type: "icon", icon: SiFastapi, alt: "FastApi" },
       { type: "icon", icon: SiDocker, alt: "Docker" },
       { type: "icon", icon: SiTypescript, alt: "TS" },
       { type: "icon", icon: SiGit, alt: "Git" },
@@ -33,8 +32,7 @@ export const sampleData = [
     title: "Application",
     description: "I develop modern applications with real-world use in mind.Strong focus on performance, reliability, and smooth user flow.From idea to deployment, I handle the full development cycle.",
     stack: [
-      { type: "icon", icon: SiDart, alt: "Dart" },
-      { type: "icon", icon: SiFlutter, alt: "Flutter" },
+      { type: "icon", icon: SiReact, alt: "React-Native" },
       { type: "icon", icon: SiFirebase, alt: "Firebase" },
     ],
     img: "application.jpg",
@@ -46,6 +44,7 @@ export const sampleData = [
     description: "I design interfaces that feel intuitive and easy to use.Balancing visual appeal with practical user experience.Every design decision is made to improve usability and clarity.",
     stack: [
       { type: "icon", icon: SiFigma, alt: "Figma" },
+      {type:"icon",icon: SiClaude,alt: "Claude-Design"}
     ],
     img: "cover.png",
     colors: "#753742"
